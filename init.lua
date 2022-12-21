@@ -96,4 +96,3 @@ require('after.plugin')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=3 sts=2 sw=2 et
-
