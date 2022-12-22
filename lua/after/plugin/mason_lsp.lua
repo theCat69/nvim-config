@@ -4,7 +4,7 @@ require('mason').setup()
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
 local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'sumneko_lua', 'gopls', 'jdtls', 'yamlls', 'lemminx',
-  'kotlin_language_server', 'jsonls', 'html', 'cssls' }
+  'kotlin_language_server', 'html', 'cssls' }
 
 -- Ensure the servers above are installed
 require('mason-lspconfig').setup {
@@ -25,17 +25,10 @@ for _, lsp in ipairs(servers) do
 end
 
 -- Example custom configuration for lua
---
 -- Make runtime files discoverable to the server
 local runtime_path = vim.split(package.path, ';')
--- print(package.path)
--- print(runtime_path)
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
-
--- for key, value in pairs(runtime_path) do
---   print('\t', key, value)
--- end
 
 require('lspconfig').sumneko_lua.setup {
   on_attach = require('lib.nmap_lsp').on_attach,
