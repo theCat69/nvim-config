@@ -13,7 +13,9 @@ local mason_jdtls = 'C:/Users/vadca/AppData/Local/nvim-data/mason/packages/jdtls
 
 local bundles = {}
 
-vim.list_extend(bundles, vim.split(vim.fn.glob(jdtls_test_extension .. 'java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar'), "\n"))
+vim.list_extend(bundles,
+  vim.split(vim.fn.glob(jdtls_test_extension ..
+    'java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar'), "\n"))
 vim.list_extend(bundles, vim.split(vim.fn.glob(jdtls_test_extension .. 'vscode-java-test/server/*.jar'), "\n"))
 
 local java17 = "C:/dev/interpreteur_compilateur/Java/jdk-17.0.1"
@@ -25,7 +27,7 @@ local config = {
   cmd = {
 
     java17 .. '/bin/java', -- or '/path/to/java17_or_newer/bin/java'
-            -- depends on if `java` is in your $PATH env variable and if it points to the right version.
+    -- depends on if `java` is in your $PATH env variable and if it points to the right version.
 
     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
     '-Dosgi.bundles.defaultStartLevel=4',
@@ -50,8 +52,20 @@ local config = {
 
   on_attach = function(client, buffer)
     vim.lsp.codelens.refresh()
-    require('lib.nmap_lsp').on_attach(client, buffer)
     require("jdtls.dap").setup_dap_main_class_configs()
+    require('jdtls').setup_dap({ hotcodereplace = 'auto' })
+    -- local dap, dapui = require("dap"), require("dapui")
+    -- dapui.setup()
+    -- dap.listeners.after.event_initialized["dapui_config"] = function()
+    --   dapui.open()
+    -- end
+    -- dap.listeners.before.event_terminated["dapui_config"] = function()
+    --   dapui.close()
+    -- end
+    -- dap.listeners.before.event_exited["dapui_config"] = function()
+    --   dapui.close()
+    -- end
+    require('lib.nmap_lsp').on_attach(client, buffer)
   end,
 
   root_dir = require('jdtls.setup').find_root({
@@ -84,7 +98,10 @@ local config = {
         },
       },
       format = {
-        enabled = false,
+        enabled = true,
+        settings = {
+          url = os.getenv('DEV') .. '/project/jdtls/google-formatting-style/eclipse-java-google-style.xml',
+        },
       },
       configuration = {
         updateBuildConfiguration = "interactive",
@@ -127,31 +144,40 @@ local config = {
   },
 }
 
-require('jdtls').start_or_attach(config)
-require('jdtls').setup_dap({ hotcodereplace = 'auto' })
-require("jdtls.setup").add_commands()
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  pattern = { "*.java" },
+  callback = function()
+    local _, _ = pcall(vim.lsp.codelens.refresh)
+  end,
+})
 
---[[ require('dap').configurations.java = {{
-  projectName = project_name,
-  javaExec = java17,
-  mainClass = "com.fef.springboot.actuator.Application",
-}} --]]
+require('jdtls').start_or_attach(config)
+-- require("jdtls.setup").add_commands()
 
 vim.cmd("command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)")
 vim.cmd("command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_set_runtime JdtSetRuntime lua require('jdtls').set_runtime(<f-args>)")
 vim.cmd("command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()")
--- vim.cmd "command! -buffer JdtJol lua require('jdtls').jol()"
+vim.cmd("command! -buffer JdtJol lua require('jdtls').jol()")
 vim.cmd("command! -buffer JdtBytecode lua require('jdtls').javap()")
--- vim.cmd "command! -buffer JdtJshell lua require('jdtls').jshell()"
+vim.cmd("command! -buffer JdtJshell lua require('jdtls').jshell()")
 
 local opts = { noremap = true, silent = true }
 local map = vim.api.nvim_set_keymap
 
---[[ this is not working right now because jtls is using java in path to compile 
--- but test are run using configured runtimes 
--- map('n', 'gB', "<Cmd>lua require('jdtls').compile('full')<CR>", opts)
---]]
+-- Refactor code
+map('n', '<A-o>', "<Cmd>lua require('jdtls').organize_imports()<CR>", opts)
 
-map('n', 'gT', "<Cmd>lua require('jdtls').test_class()<CR>", opts)
-map('n', 'gB', "<Cmd>lua require('dap').continue()<CR>", opts)
-map('n', 'gC', "<Cmd>lua require('dap').terminate()<CR>", opts)
+-- Test & debug
+map('n', '<leader>tc', "<Cmd>lua require('jdtls').test_class()<CR>", opts)
+map('n', '<leader>tm', "<Cmd>lua require('jdtls').test_nearest_method()<CR>", opts)
+map('n', '<leader>rd', "<Cmd>lua require('dap').continue()<CR>", opts)
+map('n', '<leader>qd', "<Cmd>lua require('dap').terminate()<CR>", opts)
+
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  group = vim.api.nvim_create_augroup('onSaveEvent', { clear = true }),
+  callback = function()
+    vim.lsp.buf.format({ sync = true })
+    require('jdtls').organize_imports()
+  end,
+})

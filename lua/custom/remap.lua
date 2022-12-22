@@ -19,6 +19,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- past from clipboard
 vim.keymap.set("n", '<C-b>', '"*p')
+vim.keymap.set("c", '<C-b>', '"*p')
 vim.keymap.set("n", '<C-c>', "<Esc>")
 
 -- Diagnostic keymaps

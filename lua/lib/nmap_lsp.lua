@@ -40,10 +40,11 @@ function M.on_attach(_, bufnr)
 
   local format = function(_)
     if vim.lsp.buf.format then
-      vim.lsp.buf.format()
+      vim.lsp.buf.format({ timeout_ms = 2000 })
     elseif vim.lsp.buf.formatting then
       vim.lsp.buf.formatting()
     end
+    print('code formatted')
   end
 
   nmap('<A-l>', format, 'Format Code')
