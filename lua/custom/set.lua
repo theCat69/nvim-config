@@ -7,6 +7,12 @@ vim.wo.number = true
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
+-- defining tabstop and shiftwidth
+vim.opt.tabstop = 3
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.bo.softtabstop = 2
+
 -- Enable break indent
 vim.o.breakindent = true
 
