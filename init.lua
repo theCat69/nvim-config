@@ -44,7 +44,7 @@ require('packer').startup(function(use)
     after = 'nvim-treesitter',
   }
 
-  -- Git related plugins
+
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
@@ -70,6 +70,9 @@ require('packer').startup(function(use)
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
   }
+
+  -- get doc for nvim lua code
+  use { "folke/neodev.nvim" }
 
   if is_bootstrap then
     require('packer').sync()
