@@ -19,7 +19,8 @@ require('packer').startup(function(use)
       'williamboman/mason-lspconfig.nvim',
       'mfussenegger/nvim-jdtls',
       'mfussenegger/nvim-dap',
-
+      'theHamsta/nvim-dap-virtual-text',
+      'rcarriga/nvim-dap-ui',
       -- Useful status updates for LSP
       'j-hui/fidget.nvim',
     },
@@ -101,4 +102,3 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 })
 
 require('custom')
-require('after.plugin')
