@@ -1,3 +1,4 @@
+-- this is an utility class for LSP fonction
 local M = {}
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.

@@ -52,7 +52,7 @@ local config = {
     vim.lsp.codelens.refresh()
     require("jdtls.dap").setup_dap_main_class_configs()
     require('jdtls').setup_dap({ hotcodereplace = 'auto' })
-    require('lib.nmap_lsp').on_attach(client, buffer)
+    require('utils.lsp_utils').on_attach(client, buffer)
   end,
 
   root_dir = require('jdtls.setup').find_root({

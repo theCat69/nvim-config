@@ -18,21 +18,11 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 for _, lsp in ipairs(servers) do
   if (lsp ~= 'jdtls') then
     require('lspconfig')[lsp].setup {
-      on_attach = require('lib.nmap_lsp').on_attach,
+      on_attach = require('utils.lsp_utils').on_attach,
       capabilities = capabilities,
     }
   end
 end
-
---       diagnostics = {
---         globals = { 'vim' },
---       },
---       workspace = { library = vim.api.nvim_get_runtime_file('', true) },
---       -- Do not send telemetry data containing a randomized but unique identifier
---       telemetry = { enable = false },
---     },
---   },
--- }
 
 -- Turn on lsp status information
 require('fidget').setup()
