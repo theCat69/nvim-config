@@ -19,7 +19,8 @@ require('packer').startup(function(use)
       'williamboman/mason-lspconfig.nvim',
       'mfussenegger/nvim-jdtls',
       'mfussenegger/nvim-dap',
-
+      'theHamsta/nvim-dap-virtual-text',
+      'rcarriga/nvim-dap-ui',
       -- Useful status updates for LSP
       'j-hui/fidget.nvim',
     },
@@ -44,7 +45,7 @@ require('packer').startup(function(use)
     after = 'nvim-treesitter',
   }
 
-  -- Git related plugins
+
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
@@ -65,6 +66,14 @@ require('packer').startup(function(use)
   -- if has_plugins then
   --   plugins(use)
   -- end
+
+  use {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
+
+  -- get doc for nvim lua code
+  use { "folke/neodev.nvim" }
 
   if is_bootstrap then
     require('packer').sync()
@@ -93,4 +102,3 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 })
 
 require('custom')
-require('after.plugin')

@@ -1,6 +1,5 @@
-local dap, dapui = require("dap"), require("dapui")
-
-dapui.setup({
+require('nvim-dap-virtual-text').setup()
+require('dapui').setup({
   icons = { expanded = "", collapsed = "", current_frame = "" },
   mappings = {
     -- Use a table to apply multiple mappings
@@ -32,7 +31,7 @@ dapui.setup({
   layouts = {
     {
       elements = {
-      -- Elements can be strings or table with id and size keys.
+        -- Elements can be strings or table with id and size keys.
         { id = "scopes", size = 0.25 },
         "breakpoints",
         "stacks",
@@ -52,7 +51,7 @@ dapui.setup({
   },
   controls = {
     -- Requires Neovim nightly (or 0.8 when released)
-    enabled = true,
+    enabled = false,
     -- Display controls in this element
     element = "repl",
     icons = {
@@ -81,12 +80,23 @@ dapui.setup({
   }
 })
 
-dap.listeners.after.event_initialized["dapui_config"] = function()
-  dapui.open()
+local opts = { noremap = true, silent = true }
+local map = vim.api.nvim_set_keymap
+map('n', '<leader>rd', "<Cmd>lua require('dap').continue()<CR>", opts)
+map('n', '<leader>qd', "<Cmd>lua require('dap').terminate()<CR>", opts)
+map('n', '<leader>tb', "<Cmd>lua require('dap').toggle_breakpoint()<CR>", opts)
+map('n', '<leader>so', "<Cmd>lua require('dap').step_over()<CR>", opts)
+map('n', '<leader>si', "<Cmd>lua require('dap').step_into()<CR>", opts)
+map('n', '<leader>ou', "<Cmd>lua require('dapui').open()<CR>", opts)
+map('n', '<leader>qu', "<Cmd>lua require('dapui').close()<CR>", opts)
+require('dap').listeners.after.event_initialized["dapui_config"] = function()
+  require('dapui').open()
 end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-  dapui.close()
+-- this is not working dunno why
+require('dap').listeners.before.event_terminated["dap_session"] = function()
+  require('dapui').close()
 end
-dap.listeners.before.event_exited["dapui_config"] = function()
-  dapui.close()
+-- no working as well dunno why
+require('dap').listeners.before.event_exited["dap_session"] = function()
+  require('dapui').close()
 end

@@ -1,5 +1,3 @@
-vim.opt_local.cmdheight = 2 -- more space in the neovim command line for displaying messages
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
@@ -54,18 +52,7 @@ local config = {
     vim.lsp.codelens.refresh()
     require("jdtls.dap").setup_dap_main_class_configs()
     require('jdtls').setup_dap({ hotcodereplace = 'auto' })
-    -- local dap, dapui = require("dap"), require("dapui")
-    -- dapui.setup()
-    -- dap.listeners.after.event_initialized["dapui_config"] = function()
-    --   dapui.open()
-    -- end
-    -- dap.listeners.before.event_terminated["dapui_config"] = function()
-    --   dapui.close()
-    -- end
-    -- dap.listeners.before.event_exited["dapui_config"] = function()
-    --   dapui.close()
-    -- end
-    require('lib.nmap_lsp').on_attach(client, buffer)
+    require('utils.lsp_utils').on_attach(client, buffer)
   end,
 
   root_dir = require('jdtls.setup').find_root({
@@ -170,9 +157,6 @@ map('n', '<A-o>', "<Cmd>lua require('jdtls').organize_imports()<CR>", opts)
 -- Test & debug
 map('n', '<leader>tc', "<Cmd>lua require('jdtls').test_class()<CR>", opts)
 map('n', '<leader>tm', "<Cmd>lua require('jdtls').test_nearest_method()<CR>", opts)
-map('n', '<leader>rd', "<Cmd>lua require('dap').continue()<CR>", opts)
-map('n', '<leader>qd', "<Cmd>lua require('dap').terminate()<CR>", opts)
-
 
 vim.api.nvim_create_autocmd('BufWritePre', {
   group = vim.api.nvim_create_augroup('onSaveEvent', { clear = true }),
