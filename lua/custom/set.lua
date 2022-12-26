@@ -44,4 +44,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
-
+-- vim.api.nvim_set_hl(0, "iCursor", { ctermbg = 0, fg = white, bg = blue })
+-- vim.api.nvim_set_hl(0, "Cursor", { ctermbg = 0, guifg = white, guibg = green })
+vim.opt.guicursor = "n-v-c-sm:block-Cursor,i-ci-ve:block-iCursor,r-cr-o:hor20"
