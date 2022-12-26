@@ -1,8 +1,8 @@
-# My Neovim config
+# :smile_cat: The Cat Neovim config :smile_cat:
 
 An awesomly cool and blazingly fast nvim config.
 
-## My full setup
+## :heart_eyes_cat: The Cat full setup :heart_eyes_cat:
 
 I am a windows 10 user (I know i suck thank you).
 If you use windows as well and want to use neovim as your editor I recommend you to build neovim from source using cygwin and ninja.
