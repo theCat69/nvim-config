@@ -1,4 +1,8 @@
+-- neodev
+require('neodev').setup()
+
 -- Setup mason so it can manage external tooling
+-- Ensure the servers above are installed
 require('mason').setup()
 
 -- Enable the following language servers
@@ -6,7 +10,6 @@ require('mason').setup()
 local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'sumneko_lua', 'gopls', 'jdtls', 'yamlls', 'lemminx',
   'kotlin_language_server', 'html', 'cssls' }
 
--- Ensure the servers above are installed
 require('mason-lspconfig').setup {
   ensure_installed = servers,
 }

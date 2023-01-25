@@ -44,6 +44,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
--- vim.api.nvim_set_hl(0, "iCursor", { ctermbg = 0, fg = white, bg = blue })
--- vim.api.nvim_set_hl(0, "Cursor", { ctermbg = 0, guifg = white, guibg = green })
-vim.opt.guicursor = "n-v-c-sm:block-Cursor,i-ci-ve:block-iCursor,r-cr-o:hor20"
+
+-- cursor change color when mode change and blinking insert cursor
+vim.api.nvim_set_hl(0, "iCursor", { fg = '#00BFFF', bg = '#00BFFF' })
+vim.api.nvim_set_hl(0, "vCursor", { fg = '#EE82EE', bg = '#EE82EE' })
+vim.api.nvim_set_hl(0, "Cursor", { fg = '#90EE90', bg = '#90EE90' })
+vim.opt.guicursor = "n-c-sm:block-Cursor,v:block-vCursor,i-ci-ve:block-iCursor-blinkwait500-blinkoff200-blinkon500,r-cr-o:hor20"

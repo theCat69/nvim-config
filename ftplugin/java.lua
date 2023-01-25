@@ -154,6 +154,58 @@ local map = vim.api.nvim_set_keymap
 -- Refactor code
 map('n', '<A-o>', "<Cmd>lua require('jdtls').organize_imports()<CR>", opts)
 
+-- Code generateToString
+
+-- local function set_configuration(settings)
+--   vim.lsp.buf_request(0, "workspace/didChangeConfiguration", {
+--     settings = settings,
+--   }, function() end)
+-- end
+--
+-- local function apply_edit(err, response)
+--   if response then
+--     local edit = response
+--     if response.edit then
+--       edit = response.edit
+--     end
+--     vim.lsp.util.apply_workspace_edit(edit, "utf-16")
+--   elseif err then
+--     vim.notify(vim.inspect(err), vim.log.levels.ERROR)
+--   end
+-- end
+--
+-- function generateConstructor(fields, params, optss)
+--   if fields == nil then
+--     vim.lsp.buf_request(0, "java/checkConstructorsStatus", vim.lsp.util.make_range_params(), function(err, resp)
+--       if resp then
+--         vim.fn["generators#GenerateConstructor"](resp.fields, resp.constructors, optss)
+--       else
+--         vim.notify(vim.inspect(err), vim.log.levels.ERROR)
+--       end
+--     end)
+--   else
+--     set_configuration({
+--       ["java.codeGeneration.insertionLocation"] = "lastMember",
+--     })
+--
+--     if params.default_constructor then
+--       fields = {}
+--     end
+--     local context = vim.lsp.util.make_range_params()
+--     context.context = {
+--       diagnostics = {},
+--       only = nil,
+--     }
+--     vim.lsp.buf_request(0, "java/generateConstructors", {
+--       context = context,
+--       fields = fields,
+--       constructors = params.constructors,
+--     }, apply_edit)
+--   end
+-- end
+--
+-- map('n', '<leader>gc', "<Cmd>lua generateConstructor(nil, nil, { default = false })<CR>", opts)
+
 -- Test & debug
 map('n', '<leader>tc', "<Cmd>lua require('jdtls').test_class()<CR>", opts)
 map('n', '<leader>tm', "<Cmd>lua require('jdtls').test_nearest_method()<CR>", opts)
