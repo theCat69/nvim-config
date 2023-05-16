@@ -75,6 +75,16 @@ require('packer').startup(function(use)
   -- get doc for nvim lua code
   use { "folke/neodev.nvim" }
 
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional
+    },
+    config = function()
+      require("nvim-tree").setup {}
+    end
+  }
+
   if is_bootstrap then
     require('packer').sync()
   end
