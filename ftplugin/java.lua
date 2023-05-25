@@ -5,9 +5,9 @@ local extendedClientCapabilities = require('jdtls').extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
-local workspace_dir = 'C:/dev/project/jdtls/' .. project_name
-local jdtls_test_extension = 'C:/dev/editeur/jdtls-extension/'
-local mason_jdtls = 'C:/Users/vadca/AppData/Local/nvim-data/mason/packages/jdtls/'
+local workspace_dir = os.getenv('DEV') .. '/project/jdtls/' .. project_name
+local jdtls_test_extension = os.getenv('DEV') .. '/editeur/jdtls-extension/'
+local mason_jdtls = os.getenv('NVIM_DATA') .. '/mason/packages/jdtls/'
 
 local bundles = {}
 
@@ -16,8 +16,9 @@ vim.list_extend(bundles,
     'java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar'), "\n"))
 vim.list_extend(bundles, vim.split(vim.fn.glob(jdtls_test_extension .. 'vscode-java-test/server/*.jar'), "\n"))
 
-local java17 = "C:/dev/interpreteur_compilateur/Java/jdk-17.0.1"
-local java11 = "C:/dev/interpreteur_compilateur/Java/jdk-11.0.12+7"
+local java17 = os.getenv('JAVA_HOME_JDK17')
+local java11 = os.getenv('JAVA_HOME_JDK11')
+
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
   -- The command that starts the language server
@@ -141,8 +142,10 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 require('jdtls').start_or_attach(config)
 -- require("jdtls.setup").add_commands()
 
-vim.cmd("command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)")
-vim.cmd("command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_set_runtime JdtSetRuntime lua require('jdtls').set_runtime(<f-args>)")
+vim.cmd(
+  "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)")
+vim.cmd(
+  "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_set_runtime JdtSetRuntime lua require('jdtls').set_runtime(<f-args>)")
 vim.cmd("command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()")
 vim.cmd("command! -buffer JdtJol lua require('jdtls').jol()")
 vim.cmd("command! -buffer JdtBytecode lua require('jdtls').javap()")
