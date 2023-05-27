@@ -92,11 +92,9 @@ map('n', '<leader>qu', "<Cmd>lua require('dapui').close()<CR>", opts)
 require('dap').listeners.after.event_initialized["dapui_config"] = function()
   require('dapui').open()
 end
--- this is not working dunno why
 require('dap').listeners.before.event_terminated["dap_session"] = function()
   require('dapui').close()
 end
--- no working as well dunno why
 require('dap').listeners.before.event_exited["dap_session"] = function()
   require('dapui').close()
 end
