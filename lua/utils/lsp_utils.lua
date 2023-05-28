@@ -47,7 +47,6 @@ function M.on_attach(_, bufnr)
     elseif vim.lsp.buf.formatting then
       vim.lsp.buf.formatting()
     end
-    print('code formatted')
   end
 
   nmap('<A-l>', format, 'Format Code')

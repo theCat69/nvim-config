@@ -19,10 +19,11 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- past from clipboard
 vim.keymap.set("v", '<C-b>', '"*y')
-vim.keymap.set("n", '<C-b>', '"*p')
-vim.keymap.set("c", '<C-b>', '"*p')
+vim.keymap.set("n", '<C-b>', 'h"*p')
+vim.keymap.set("c", '<C-b>', 'h"*p')
 -- exit edit mode to go back to normal mode
-vim.keymap.set({ 'n', 'i', 'v' }, '<C-f>', "<Esc>")
+vim.keymap.set({ 'n', 'i', 'v' }, '<C-c>', "<Esc>l")
+vim.keymap.set({ 'n', 'i', 'v' }, '<C-f>', "<Esc>l")
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
