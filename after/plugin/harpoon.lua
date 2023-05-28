@@ -3,7 +3,7 @@ local harpoon_mark = require('harpoon.mark')
 local harpoon_ui = require('harpoon.ui')
 
 harpoon.setup({
-  -- tabline = true,
+  tabline = true,
   excluded_filetypes = { "." }
 })
 
