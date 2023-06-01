@@ -26,6 +26,7 @@ require('packer').startup(function(use)
     },
   }
 
+  -- for debugging application if an UI
   use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
 
   use { -- Autocompletion
@@ -48,6 +49,8 @@ require('packer').startup(function(use)
 
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
+  -- adding signs at the left of the file to indicate
+  -- git status of the line
   use 'lewis6991/gitsigns.nvim'
 
   use 'navarasu/onedark.nvim'               -- Theme inspired by Atom
@@ -67,6 +70,7 @@ require('packer').startup(function(use)
   --   plugins(use)
   -- end
 
+  -- autopair ( { [
   use {
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
@@ -75,16 +79,16 @@ require('packer').startup(function(use)
   -- get doc for nvim lua code
   use { "folke/neodev.nvim" }
 
+  -- just to get a nice file tree like in any code editors
+  -- it can slow down startup a lot on low spec device
   use {
     'nvim-tree/nvim-tree.lua',
     requires = {
       'nvim-tree/nvim-web-devicons', -- optional
     },
-    config = function()
-      require("nvim-tree").setup {}
-    end
   }
 
+  -- refactoring good for typescript
   use {
     "ThePrimeagen/refactoring.nvim",
     requires = {
@@ -93,7 +97,12 @@ require('packer').startup(function(use)
     }
   }
 
-  use 'ThePrimeagen/harpoon';
+  -- use to "hook" files with Ctrl + M and navigate with
+  -- Ctrl + N and Ctrl + P
+  use 'ThePrimeagen/harpoon'
+
+  -- rust additional tools
+  -- use 'simrat39/rust-tools.nvim'
 
   if is_bootstrap then
     require('packer').sync()
