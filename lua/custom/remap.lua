@@ -21,10 +21,12 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("v", '<C-b>', '"*y')
 vim.keymap.set("n", '<C-b>', '"*p')
 vim.keymap.set("c", '<C-b>', '"*p')
-vim.keymap.set("n", '<C-c>', "<Esc>")
+-- exit edit mode to go back to normal mode
+vim.keymap.set({ 'n', 'i', 'v' }, '<C-c>', "<Esc>l")
+vim.keymap.set({ 'n', 'i', 'v' }, '<C-f>', "<Esc>l")
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<A-c>', vim.diagnostic.goto_prev)
+vim.keymap.set('n', '<A-d>', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
