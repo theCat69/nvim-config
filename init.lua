@@ -99,7 +99,7 @@ require('packer').startup(function(use)
 
   -- use to "hook" files with Ctrl + M and navigate with
   -- Ctrl + N and Ctrl + P
-  use 'ThePrimeagen/harpoon'
+  -- use 'ThePrimeagen/harpoon'
 
   -- rust additional tools
   -- use 'simrat39/rust-tools.nvim'
