@@ -23,6 +23,15 @@ for _, lsp in ipairs(servers) do
     require('lspconfig')[lsp].setup {
       on_attach = require('utils.lsp_utils').on_attach,
       capabilities = capabilities,
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = {
+              'require',
+            }
+          }
+        }
+      }
     }
   end
 end
