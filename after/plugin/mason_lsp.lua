@@ -28,6 +28,7 @@ for _, lsp in ipairs(servers) do
           diagnostics = {
             globals = {
               'require',
+              'pcall',
             }
           }
         }

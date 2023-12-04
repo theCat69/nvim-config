@@ -38,9 +38,15 @@ require('lazy').setup({
   -- for debugging application if an UI
   { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
 
+  {
+    "L3MON4D3/LuaSnip",
+    dependencies = { "theCat69/friendly-snippets" },
+  },
+
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip'
+    },
   },
 
   { -- Highlight, edit, and navigate code
@@ -62,7 +68,7 @@ require('lazy').setup({
 
   'navarasu/onedark.nvim', -- Theme inspired by Atom
   'nvim-lualine/lualine.nvim', -- Fancier statusline
-  'lukas-reineke/indent-blankline.nvim', -- Add indentation guides even on blank lines
+  { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} }, -- Add indentation guides even on blank lines
   'numToStr/Comment.nvim', -- "gc" to comment visual regions/lines
 
   -- Fuzzy Finder (files, lsp, etc)
