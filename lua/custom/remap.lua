@@ -27,7 +27,7 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- Move line to start or end of top or bottom line
-vim.keymap.set('n', 'dsk', '^^d$k^^hp')
-vim.keymap.set('n', 'dxk', '^^d$k$p')
-vim.keymap.set('n', 'dxj', '^^d$j$p')
-vim.keymap.set('n', 'dxj', '^^d$j$p')
+vim.keymap.set('n', 'dsk', '^^d$k^^hpjddk^^')
+vim.keymap.set('n', 'dxk', '^^d$k$pjddk$')
+vim.keymap.set('n', 'dsj', '^^d$j^^hpkdd^^')
+vim.keymap.set('n', 'dxj', '^^d$j$pkdd$')
