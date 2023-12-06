@@ -1,9 +1,4 @@
 -- [[ Basic Keymaps ]]
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -26,7 +21,13 @@ vim.keymap.set({ 'n', 'i', 'v' }, '<C-c>', "<Esc>l")
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-f>', "<Esc>l")
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '<A-c>', vim.diagnostic.goto_prev)
-vim.keymap.set('n', '<A-d>', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<A-k>', vim.diagnostic.goto_prev)
+vim.keymap.set('n', '<A-j>', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+
+-- Move line to start or end of top or bottom line
+vim.keymap.set('n', 'dsk', '^^d$k^^hp')
+vim.keymap.set('n', 'dxk', '^^d$k$p')
+vim.keymap.set('n', 'dxj', '^^d$j$p')
+vim.keymap.set('n', 'dxj', '^^d$j$p')

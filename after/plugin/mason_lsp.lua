@@ -8,7 +8,7 @@ require('mason').setup()
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
 local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'lua_ls', 'gopls', 'jdtls', 'yamlls', 'lemminx',
-  'kotlin_language_server', 'html', 'cssls', 'bashls', 'jsonls' }
+  'kotlin_language_server', 'html', 'cssls', 'bashls', 'jsonls', 'tailwindcss' }
 
 require('mason-lspconfig').setup {
   ensure_installed = servers,
@@ -23,6 +23,16 @@ for _, lsp in ipairs(servers) do
     require('lspconfig')[lsp].setup {
       on_attach = require('utils.lsp_utils').on_attach,
       capabilities = capabilities,
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = {
+              'require',
+              'pcall',
+            }
+          }
+        }
+      }
     }
   end
 end
