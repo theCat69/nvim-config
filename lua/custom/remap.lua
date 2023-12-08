@@ -27,8 +27,6 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- Move line to start or end of top or bottom line
--- i dont know why, on the first remap, the h makes me delete the line if i try to move to empty line
--- but when i type it myself it works perfectly
 vim.keymap.set('n', 'dsk', '^^d$k^^i <Esc>pjddk^^h<Del>')
 vim.keymap.set('n', 'dxk', '^^d$k$pjddk$')
 vim.keymap.set('n', 'dsj', '^^d$j^^i <Esc>pkdd^^h<Del>')
@@ -45,3 +43,16 @@ end
 -- Move line top or bottom (switching with above or below line)
 vim.keymap.set('n', '<A-K>', 'ddkkp')
 vim.keymap.set('n', '<A-J>', 'ddp')
+
+-- Visual mode block
+vim.keymap.set('n', '<A-v>', '<C-v>')
+
+-- Global marks
+-- Go to mark (should follow with the mark letter)
+vim.keymap.set('n', '<leader>gm', '`')
+-- Set mark (should follow with the mark letter)
+vim.keymap.set('n', '<leader>sm', 'm')
+-- Removing built in mark mapping (to avoid the big thinger issue)
+vim.keymap.set('n', 'm', '<nop>')
+-- Delete all marks
+vim.keymap.set('n', '<leader>dam', ':delm A-Z <CR>')
