@@ -19,7 +19,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 for _, lsp in ipairs(servers) do
-  if (lsp ~= 'jdtls') then
+  if (lsp ~= 'jdtls' and lsp ~= 'groovyls') then
     require('lspconfig')[lsp].setup {
       on_attach = require('utils.lsp_utils').on_attach,
       capabilities = capabilities,
