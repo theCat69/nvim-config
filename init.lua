@@ -111,7 +111,10 @@ require('lazy').setup({
   -- 'simrat39/rust-tools.nvim',
 
   -- Jenkinsfile validation
-  { "ckipp01/nvim-jenkinsfile-linter" }
+  { "ckipp01/nvim-jenkinsfile-linter" },
+
+  -- nginx
+  { "chr4/nginx.vim" },
 
 })
 
