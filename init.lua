@@ -105,7 +105,11 @@ require('lazy').setup({
 
   -- to "hook" files with Ctrl + M and navigate with
   -- Ctrl + N and Ctrl + P
-  -- 'ThePrimeagen/harpoon',
+  {
+    'ThePrimeagen/harpoon',
+    branch = "harpoon2",
+    dependencies = { { "nvim-lua/plenary.nvim" } }
+  },
 
   -- rust additional tools
   -- 'simrat39/rust-tools.nvim',
