@@ -49,7 +49,10 @@ require('mason-lspconfig').setup_handlers {
           cargo = {
             allFeatures = true,
           },
-          diagnostics = { disabled = { "unresolved-proc-macro" } }
+          diagnostics = { disabled = { "unresolved-proc-macro" } },
+          checkOnSave = {
+            command = "clippy",
+          },
         }
       }
     }
