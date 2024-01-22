@@ -27,17 +27,17 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- Move line to start or end of top or bottom line
-vim.keymap.set('n', 'dsk', '^^d$k^^i <Esc>pjddk^^h<Del>')
-vim.keymap.set('n', 'dxk', '^^d$k$pjddk$')
-vim.keymap.set('n', 'dsj', '^^d$j^^i <Esc>pkdd^^h<Del>')
-vim.keymap.set('n', 'dxj', '^^d$j$pkdd$')
+vim.keymap.set('n', 'dsk', '_d$k_i <Esc>pjddk_h<Del>')
+vim.keymap.set('n', 'dxk', '_d$k$pjddk$')
+vim.keymap.set('n', 'dsj', '_d$j_i <Esc>pkdd_h<Del>')
+vim.keymap.set('n', 'dxj', '_d$j$pkdd$')
 
 -- for multiline
 for i = 1, 50 do
-  vim.keymap.set('n', 'ds' .. i .. 'k', '^^d$' .. i .. 'k^^i <Esc>p' .. i .. 'jdd' .. i .. 'k^^h<Del>')
-  vim.keymap.set('n', 'dx' .. i .. 'k', '^^d$' .. i .. 'k$p' .. i .. 'jdd' .. i .. 'k$')
-  vim.keymap.set('n', 'ds' .. i .. 'j', '^^d$' .. i .. 'j^^i <Esc>p' .. i .. 'kdd' .. i - 1 .. 'j^^h<Del>')
-  vim.keymap.set('n', 'dx' .. i .. 'j', '^^d$' .. i .. 'j$p' .. i .. 'kdd' .. i - 1 .. 'j$')
+  vim.keymap.set('n', 'ds' .. i .. 'k', '_d$' .. i .. 'k_i <Esc>p' .. i .. 'jdd' .. i .. 'k_h<Del>')
+  vim.keymap.set('n', 'dx' .. i .. 'k', '_d$' .. i .. 'k$p' .. i .. 'jdd' .. i .. 'k$')
+  vim.keymap.set('n', 'ds' .. i .. 'j', '_d$' .. i .. 'j_i <Esc>p' .. i .. 'kdd' .. i - 1 .. 'j_h<Del>')
+  vim.keymap.set('n', 'dx' .. i .. 'j', '_d$' .. i .. 'j$p' .. i .. 'kdd' .. i - 1 .. 'j$')
 end
 
 -- Move line top or bottom (switching with above or below line)
@@ -49,10 +49,6 @@ vim.keymap.set('n', '<A-v>', '<C-v>')
 
 -- Global marks
 -- Go to mark (should follow with the mark letter)
-vim.keymap.set('n', '<leader>gm', '`')
--- Set mark (should follow with the mark letter)
-vim.keymap.set('n', '<leader>sm', 'm')
--- Removing built in mark mapping (to avoid the big thinger issue)
-vim.keymap.set('n', 'm', '<nop>')
+vim.keymap.set('n', 'x', '`')
 -- Delete all marks
 vim.keymap.set('n', '<leader>dam', ':delm A-Z <CR>')
