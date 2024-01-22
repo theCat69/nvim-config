@@ -36,7 +36,7 @@ require('lazy').setup({
   },
 
   -- for debugging application if an UI
-  { "rcarriga/nvim-dap-ui",                dependencies = { "mfussenegger/nvim-dap" } },
+  { "rcarriga/nvim-dap-ui",                     dependencies = { "mfussenegger/nvim-dap" } },
 
   {
     "L3MON4D3/LuaSnip",
@@ -66,16 +66,16 @@ require('lazy').setup({
   -- git status of the line
   'lewis6991/gitsigns.nvim',
 
-  'navarasu/onedark.nvim',                                                                         -- Theme inspired by Atom
-  'nvim-lualine/lualine.nvim',                                                                     -- Fancier statusline
-  { 'lukas-reineke/indent-blankline.nvim', main = 'ibl',                              opts = {} }, -- Add indentation guides even on blank lines
-  'numToStr/Comment.nvim',                                                                         -- "gc" to comment visual regions/lines
+  'navarasu/onedark.nvim',     -- Theme inspired by Atom
+  'nvim-lualine/lualine.nvim', -- Fancier statusline
+  -- { 'lukas-reineke/indent-blankline.nvim', main = 'ibl',                              opts = {} }, -- Add indentation guides even on blank lines
+  'numToStr/Comment.nvim',     -- "gc" to comment visual regions/lines
 
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim',            branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 'nvim-telescope/telescope.nvim',            branch = '0.1.x',                          dependencies = { 'nvim-lua/plenary.nvim' } },
 
   -- Fuzzy Finder Algorithm which dependencies local dependencies to be built. Only load if `make` is available
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make',   cond = vim.fn.executable 'make' == 1 },
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make',                            cond = vim.fn.executable 'make' == 1 },
 
   {
     "windwp/nvim-autopairs",
@@ -112,7 +112,7 @@ require('lazy').setup({
   },
 
   -- rust additional tools
-  -- 'simrat39/rust-tools.nvim',
+  'simrat39/rust-tools.nvim',
 
   -- Jenkinsfile validation
   { "ckipp01/nvim-jenkinsfile-linter" },
