@@ -90,7 +90,7 @@ require('lazy').setup({
   {
     'nvim-tree/nvim-tree.lua',
     dependencies = {
-      'nvim-tree/nvim-web-devicons', -- optional
+      'nvim-tree/nvim-web-devicons',
     },
   },
 
