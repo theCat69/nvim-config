@@ -32,11 +32,16 @@ require('lazy').setup({
       'rcarriga/nvim-dap-ui',
       -- Useful status updates for LSP
       { 'j-hui/fidget.nvim', tag = 'legacy' },
-    }
+    },
+    lazy = true,
   },
 
   -- for debugging application if an UI
-  { "rcarriga/nvim-dap-ui",                     dependencies = { "mfussenegger/nvim-dap" } },
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = { "mfussenegger/nvim-dap" },
+    lazy = true,
+  },
 
   {
     "L3MON4D3/LuaSnip",
@@ -56,15 +61,19 @@ require('lazy').setup({
     end,
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
-    }
+    },
   },
 
 
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
+  { 'tpope/vim-fugitive', lazy = true },
+  { 'tpope/vim-rhubarb',  lazy = true },
+
   -- adding signs at the left of the file to indicate
   -- git status of the line
-  'lewis6991/gitsigns.nvim',
+  {
+    'lewis6991/gitsigns.nvim',
+    lazy = true,
+  },
 
   'navarasu/onedark.nvim',     -- Theme inspired by Atom
   'nvim-lualine/lualine.nvim', -- Fancier statusline
@@ -72,18 +81,28 @@ require('lazy').setup({
   'numToStr/Comment.nvim',     -- "gc" to comment visual regions/lines
 
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim',            branch = '0.1.x',                          dependencies = { 'nvim-lua/plenary.nvim' } },
+  {
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    lazy = true,
+  },
 
   -- Fuzzy Finder Algorithm which dependencies local dependencies to be built. Only load if `make` is available
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make',                            cond = vim.fn.executable 'make' == 1 },
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'make',
+    cond = vim.fn.executable 'make' == 1,
+    lazy = true,
+  },
 
   {
     "windwp/nvim-autopairs",
-    config = function() require("nvim-autopairs").setup {} end
+    config = function() require("nvim-autopairs").setup {} end,
   },
 
   -- get doc for nvim lua code
-  { "folke/neodev.nvim" },
+  { "folke/neodev.nvim", lazy = true },
 
   -- just to get a nice file tree like in any code editors
   -- it can slow down startup a lot on low spec device
@@ -92,6 +111,7 @@ require('lazy').setup({
     dependencies = {
       'nvim-tree/nvim-web-devicons',
     },
+    lazy = true,
   },
 
   -- refactoring good for typescript
@@ -100,7 +120,7 @@ require('lazy').setup({
     dependencies = {
       { "nvim-lua/plenary.nvim" },
       { "nvim-treesitter/nvim-treesitter" }
-    }
+    },
   },
 
   -- to "hook" files with Ctrl + M and navigate with
@@ -108,17 +128,28 @@ require('lazy').setup({
   {
     'ThePrimeagen/harpoon',
     branch = "harpoon2",
-    dependencies = { { "nvim-lua/plenary.nvim" } }
+    dependencies = { { "nvim-lua/plenary.nvim" } },
+    lazy = true,
+
   },
 
   -- rust additional tools
-  'simrat39/rust-tools.nvim',
+  {
+    'simrat39/rust-tools.nvim',
+    lazy = true,
+  },
 
   -- Jenkinsfile validation
-  { "ckipp01/nvim-jenkinsfile-linter" },
+  {
+    "ckipp01/nvim-jenkinsfile-linter",
+    lazy = true,
+  },
 
   -- nginx
-  { "chr4/nginx.vim" },
+  {
+    "chr4/nginx.vim",
+    lazy = true,
+  },
 
 })
 
