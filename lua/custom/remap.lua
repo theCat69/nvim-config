@@ -16,6 +16,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("v", '<C-b>', '"*y')
 vim.keymap.set("n", '<C-b>', '"*p')
 vim.keymap.set("c", '<C-b>', '"*p')
+
 -- exit edit mode to go back to normal mode
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-c>', "<Esc>l")
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-f>', "<Esc>l")
