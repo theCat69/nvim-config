@@ -7,9 +7,9 @@ require('mason').setup()
 
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'lua_ls', 'gopls', 'jdtls', 'yamlls', 'lemminx',
+local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'lua_ls', 'jdtls', 'yamlls', 'lemminx',
   'kotlin_language_server', 'html', 'cssls', 'bashls', 'jsonls', 'tailwindcss', 'zls', 'dockerls' }
--- 'groovyls',
+-- 'groovyls','gopls',
 
 require('mason-lspconfig').setup {
   ensure_installed = servers,
