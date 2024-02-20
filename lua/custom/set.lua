@@ -1,6 +1,22 @@
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- adding clipboard definition for unix
+-- if vim.loop.os_uname().sysname == 'Linux'
+-- then
+--   vim.g.clipboard = {
+--     name = 'OSC 52',
+--     copy = {
+--       ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+--       ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+--     },
+--     paste = {
+--       ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+--       ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+--     },
+--   }
+-- end
+
 -- Make line numbers default
 vim.wo.number = true
 
@@ -49,4 +65,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.api.nvim_set_hl(0, "iCursor", { fg = '#00BFFF', bg = '#00BFFF' })
 vim.api.nvim_set_hl(0, "vCursor", { fg = '#EE82EE', bg = '#EE82EE' })
 vim.api.nvim_set_hl(0, "Cursor", { fg = '#90EE90', bg = '#90EE90' })
-vim.opt.guicursor = "n-c-sm:block-Cursor,v:block-vCursor,i-ci-ve:block-iCursor-blinkwait500-blinkoff200-blinkon500,r-cr-o:hor20"
+vim.opt.guicursor =
+"n-c-sm:block-Cursor,v:block-vCursor,i-ci-ve:block-iCursor-blinkwait500-blinkoff200-blinkon500,r-cr-o:hor20"
