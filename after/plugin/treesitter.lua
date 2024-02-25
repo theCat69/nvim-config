@@ -2,7 +2,12 @@
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'java', 'yaml', 'kotlin', 'tsx', 'bash', 'groovy', 'zig' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'java', 'yaml', 'kotlin', 'tsx', 'bash', 'groovy', 'zig', 'solidity' },
+
+  auto_install = true,
+  sync_install = false,
+  ignore_install = {},
+  modules = {},
 
   auto_install = true,
 
@@ -14,10 +19,10 @@ require('nvim-treesitter.configs').setup {
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = '<c-space>',
-      node_incremental = '<c-space>',
-      scope_incremental = '<c-s>',
-      node_decremental = '<c-backspace>',
+      init_selection = "gnn", -- set to `false` to disable one of the mappings
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
     },
   },
   textobjects = {
@@ -26,32 +31,32 @@ require('nvim-treesitter.configs').setup {
       lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
       keymaps = {
         -- You can use the capture groups defined in textobjects.scm
-        ['aa'] = '@parameter.outer',
-        ['ia'] = '@parameter.inner',
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
+        ['gpa'] = '@parameter.outer',
+        ['gpi'] = '@parameter.inner',
+        ['gfo'] = '@function.outer',
+        ['gfi'] = '@function.inner',
+        ['gCa'] = '@class.outer',
+        ['gCi'] = '@class.inner',
       },
     },
     move = {
       enable = true,
       set_jumps = true, -- whether to set jumps in the jumplist
       goto_next_start = {
-        [']m'] = '@function.outer',
-        [']]'] = '@class.outer',
+        ['})'] = '@function.outer',
+        ['}}'] = '@class.outer',
       },
       goto_next_end = {
-        [']M'] = '@function.outer',
-        [']['] = '@class.outer',
+        ['}('] = '@function.outer',
+        ['}{'] = '@class.outer',
       },
       goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[['] = '@class.outer',
+        ['{)'] = '@function.outer',
+        ['{}'] = '@class.outer',
       },
       goto_previous_end = {
-        ['[M'] = '@function.outer',
-        ['[]'] = '@class.outer',
+        ['{('] = '@function.outer',
+        ['{{'] = '@class.outer',
       },
     },
     swap = {

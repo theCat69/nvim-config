@@ -1,4 +1,3 @@
--- neodev
 require('neodev').setup()
 
 -- Setup mason so it can manage external tooling
@@ -8,7 +7,7 @@ require('mason').setup()
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
 local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'lua_ls', 'jdtls', 'yamlls', 'lemminx',
-  'kotlin_language_server', 'html', 'cssls', 'bashls', 'jsonls', 'tailwindcss', 'zls' }
+  'kotlin_language_server', 'html', 'cssls', 'bashls', 'jsonls', 'tailwindcss', 'zls', 'dockerls' }
 -- 'groovyls','gopls',
 
 require('mason-lspconfig').setup {
@@ -50,7 +49,7 @@ require('mason-lspconfig').setup_handlers {
           cargo = {
             allFeatures = true,
           },
-          diagnostics = { disabled = { "unresolved-proc-macro" } },
+          -- diagnostics = { disabled = { "unresolved-proc-macro" } },
           checkOnSave = {
             command = "clippy",
           },
