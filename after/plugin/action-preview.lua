@@ -15,7 +15,6 @@ require("actions-preview").setup {
     },
   },
   highlight_command = {
-    hl.delta("delta --no-gitconfig --side-by-side"),
-    -- options i tried : --grep-output-type classic
+    hl.delta("delta --no-gitconfig --side-by-side --file-style 'omit'"),
   }
 }

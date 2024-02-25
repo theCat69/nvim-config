@@ -152,19 +152,14 @@ require('lazy').setup({
   },
 
   -- nice ui for code actions
-  -- {
-  --   "theCat69/actions-preview.nvim",
-  --   config = function()
-  --     vim.keymap.set({ "v", "n" }, "gt", require("actions-preview").code_actions)
-  --   end,
-  --   lazy = true,
-  -- }
   {
-     dir = 'C:\\dev\\editeur\\actions-preview.nvim' ,
+    "aznhe21/actions-preview.nvim",
     config = function()
       vim.keymap.set({ "v", "n" }, "gt", require("actions-preview").code_actions)
     end,
-  },
+    lazy = true,
+  }
+
 })
 
 require('custom')
