@@ -153,7 +153,7 @@ require('lazy').setup({
 
   -- nice ui for code actions
   {
-    "aznhe21/actions-preview.nvim",
+    "theCat69/actions-preview.nvim",
     config = function()
       vim.keymap.set({ "v", "n" }, "gt", require("actions-preview").code_actions)
     end,
