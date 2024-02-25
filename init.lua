@@ -151,6 +151,13 @@ require('lazy').setup({
     lazy = true,
   },
 
+  -- nice ui for code actions
+  {
+    "aznhe21/actions-preview.nvim",
+    config = function()
+      vim.keymap.set({ "v", "n" }, "gt", require("actions-preview").code_actions)
+    end,
+  }
 })
 
 require('custom')
