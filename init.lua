@@ -157,6 +157,7 @@ require('lazy').setup({
     config = function()
       vim.keymap.set({ "v", "n" }, "gt", require("actions-preview").code_actions)
     end,
+    lazy = true,
   }
 })
 
