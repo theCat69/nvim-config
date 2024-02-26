@@ -65,8 +65,8 @@ require('lazy').setup({
   },
 
 
-  { 'tpope/vim-fugitive', lazy = true },
-  { 'tpope/vim-rhubarb',  lazy = true },
+  { 'tpope/vim-fugitive' },
+  { 'tpope/vim-rhubarb' },
 
   -- adding signs at the left of the file to indicate
   -- git status of the line
