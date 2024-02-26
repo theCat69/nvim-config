@@ -8,8 +8,9 @@ require('mason').setup()
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
 local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'lua_ls', 'jdtls', 'yamlls', 'lemminx',
   'kotlin_language_server', 'html', 'cssls', 'bashls', 'jsonls', 'tailwindcss', 'zls', 'dockerls',
-  'solidity_ls_nomicfoundation' }
--- 'groovyls','gopls',
+  'solidity_ls'
+}
+-- 'groovyls','gopls','solidity','solidity_ls_nomicfoundation',
 
 require('mason-lspconfig').setup {
   ensure_installed = servers,
@@ -58,16 +59,15 @@ require('mason-lspconfig').setup_handlers {
       }
     }
   end,
-  ["solidity_ls_nomicfoundation"] = function()
-    require("lspconfig")["solidity_ls_nomicfoundation"].setup {
+  ["solidity_ls"] = function()
+    require("lspconfig")["solidity"].setup {
       on_attach = require('utils.lsp_utils').on_attach,
       capabilities = capabilities,
-      cmd = { 'nomicfoundation-solidity-language-server', '--stdio' },
+      cmd = { 'solidity-ls', '--stdio' },
       filetypes = { 'solidity' },
       root_dir = require("lspconfig.util").find_git_ancestor,
     }
   end,
-
   ["jdtls"] = function()
   end,
 }

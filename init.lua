@@ -83,7 +83,6 @@ require('lazy').setup({
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
     dependencies = { 'nvim-lua/plenary.nvim' },
     lazy = true,
   },
@@ -151,7 +150,7 @@ require('lazy').setup({
       vim.keymap.set({ "v", "n" }, "gt", require("actions-preview").code_actions)
     end,
     lazy = true,
-  }
+  },
 
 })
 
