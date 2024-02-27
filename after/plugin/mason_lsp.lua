@@ -7,9 +7,7 @@ require('mason').setup()
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
 local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'lua_ls', 'jdtls', 'yamlls', 'lemminx',
-  'kotlin_language_server', 'html', 'cssls', 'bashls', 'jsonls', 'tailwindcss', 'zls', 'dockerls',
-  'solidity_ls'
-}
+  'kotlin_language_server', 'html', 'cssls', 'bashls', 'jsonls', 'tailwindcss', 'zls', 'dockerls', 'solidity_ls' }
 -- 'groovyls','gopls','solidity','solidity_ls_nomicfoundation',
 
 require('mason-lspconfig').setup {
@@ -63,7 +61,7 @@ require('mason-lspconfig').setup_handlers {
     require("lspconfig")["solidity"].setup {
       on_attach = require('utils.lsp_utils').on_attach,
       capabilities = capabilities,
-      cmd = { 'solidity-ls', '--stdio' },
+      cmd = { 'vscode-solidity-server', '--stdio' },
       filetypes = { 'solidity' },
       root_dir = require("lspconfig.util").find_git_ancestor,
     }
