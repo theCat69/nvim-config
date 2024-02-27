@@ -14,7 +14,7 @@ require("actions-preview").setup {
       end,
     },
   },
-  -- highlight_command = {
-  --   hl.delta("delta --no-gitconfig --side-by-side --grep-output-type classic"),
-  -- }
+  highlight_command = {
+    hl.delta("delta --no-gitconfig --side-by-side --file-style 'omit'"),
+  }
 }

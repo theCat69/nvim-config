@@ -24,7 +24,7 @@ vim.wo.number = true
 vim.o.mouse = 'a'
 
 -- defining tabstop and shiftwidth
-vim.opt.tabstop = 3
+vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.bo.softtabstop = 2
@@ -67,3 +67,13 @@ vim.api.nvim_set_hl(0, "vCursor", { fg = '#EE82EE', bg = '#EE82EE' })
 vim.api.nvim_set_hl(0, "Cursor", { fg = '#90EE90', bg = '#90EE90' })
 vim.opt.guicursor =
 "n-c-sm:block-Cursor,v:block-vCursor,i-ci-ve:block-iCursor-blinkwait500-blinkoff200-blinkon500,r-cr-o:hor20"
+
+-- checking if we are on windows we use powershell as the embeded neovim shell
+-- this is because cmd got compatibility issues with the termopen function
+-- that write the output of a command to an embeded untouch embeded terminal
+if string.find(vim.loop.os_uname().sysname, "NT") then
+  vim.opt.shell = "powershell"
+  vim.opt.shellcmdflag = "-command"
+  vim.opt.shellquote = "\""
+  vim.opt.shellxquote = ""
+end

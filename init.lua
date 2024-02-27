@@ -36,6 +36,9 @@ require('lazy').setup({
     lazy = true,
   },
 
+  -- a little plugin to update all mason packages
+  { 'RubixDev/mason-update-all' },
+
   -- for debugging application if an UI
   {
     "rcarriga/nvim-dap-ui",
@@ -65,8 +68,8 @@ require('lazy').setup({
   },
 
 
-  { 'tpope/vim-fugitive', lazy = true },
-  { 'tpope/vim-rhubarb',  lazy = true },
+  { 'tpope/vim-fugitive' },
+  { 'tpope/vim-rhubarb' },
 
   -- adding signs at the left of the file to indicate
   -- git status of the line
@@ -83,7 +86,6 @@ require('lazy').setup({
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
     dependencies = { 'nvim-lua/plenary.nvim' },
     lazy = true,
   },
@@ -102,7 +104,7 @@ require('lazy').setup({
   },
 
   -- get doc for nvim lua code
-  { "folke/neodev.nvim", lazy = true },
+  { "folke/neodev.nvim",        lazy = true },
 
   -- just to get a nice file tree like in any code editors
   -- it can slow down startup a lot on low spec device
@@ -123,15 +125,8 @@ require('lazy').setup({
     },
   },
 
-  -- to "hook" files with Ctrl + M and navigate with
-  -- Ctrl + N and Ctrl + P
-  {
-    'ThePrimeagen/harpoon',
-    branch = "harpoon2",
-    dependencies = { { "nvim-lua/plenary.nvim" } },
-    lazy = true,
-
-  },
+  -- a replacement for harpoon
+  { "otavioschwanck/arrow.nvim" },
 
   -- rust additional tools
   {
@@ -158,7 +153,8 @@ require('lazy').setup({
       vim.keymap.set({ "v", "n" }, "gt", require("actions-preview").code_actions)
     end,
     lazy = true,
-  }
+  },
+
 })
 
 require('custom')
