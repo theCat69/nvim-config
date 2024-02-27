@@ -63,7 +63,7 @@ require('mason-lspconfig').setup_handlers {
       capabilities = capabilities,
       cmd = { 'vscode-solidity-server', '--stdio' },
       filetypes = { 'solidity' },
-      root_dir = require("lspconfig.util").find_git_ancestor,
+      -- root_dir = require("lspconfig.util").find_git_ancestor,
     }
   end,
   ["jdtls"] = function()
