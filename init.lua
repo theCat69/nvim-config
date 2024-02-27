@@ -36,6 +36,9 @@ require('lazy').setup({
     lazy = true,
   },
 
+  -- a little plugin to update all mason packages
+  { 'RubixDev/mason-update-all' },
+
   -- for debugging application if an UI
   {
     "rcarriga/nvim-dap-ui",
