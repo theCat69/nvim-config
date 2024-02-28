@@ -13,9 +13,16 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- past from clipboard
-vim.keymap.set("v", '<C-b>', '"*y')
-vim.keymap.set("n", '<C-b>', '"*p')
-vim.keymap.set("c", '<C-b>', '"*p')
+-- if on windows
+if string.find(vim.loop.os_uname().sysname, "NT") then
+  vim.keymap.set("v", '<C-b>', '"*y')
+  vim.keymap.set("n", '<C-b>', '"*p')
+  vim.keymap.set("c", '<C-b>', '"*p')
+else -- supposing linux system otherwise
+  vim.keymap.set("v", '<C-b>', '"+y')
+  vim.keymap.set("n", '<C-b>', '"+p')
+  vim.keymap.set("c", '<C-b>', '"+p')
+end
 
 -- exit edit mode to go back to normal mode
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-c>', "<Esc>l")
