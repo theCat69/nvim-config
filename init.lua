@@ -78,7 +78,8 @@ require('lazy').setup({
     lazy = true,
   },
 
-  { 'navarasu/onedark.nvim' },     -- Theme inspired by Atom
+  { 'rakr/vim-one' },              -- Theme inspired by Atom (light or dark theme)
+  -- { 'navarasu/onedark.nvim' },     -- Theme inspired by Atom (dark theme)
   { 'nvim-lualine/lualine.nvim' }, -- Fancier statusline
   { 'numToStr/Comment.nvim' },     -- "gc" to comment visual regions/lines
 
