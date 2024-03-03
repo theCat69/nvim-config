@@ -1,19 +1,27 @@
+local function light_theme()
+  vim.g.gruvbox_contrast_light = "hard"
+  vim.g.gruvbox_improved_warnings = 1
+  vim.g.gruvbox_sign_column = "bg0"
+  vim.cmd [[set background=light]]
+end
+
+local function dark_theme()
+  -- vim.g.gruvbox_transparent_bg = 0
+  vim.cmd [[set background=dark]]
+end
+
 -- Set colorscheme
 vim.o.termguicolors = true
 
--- dark theme
--- vim.cmd [[colorscheme one]]
+-- theme
+local os_theme = os.getenv('OS_THEME')
+if os_theme == 'dark' or os_theme == 'DARK' or os_theme == 'Dark' then
+  dark_theme()
+else
+  light_theme()
+end
 
--- light theme
--- vim.g.one_allow_italics = 1
-vim.g.gruvbox_contrast_light = "hard"
-vim.g.gruvbox_improved_warnings = 1
-vim.g.gruvbox_sign_column = "bg0"
--- vim.g.gruvbox_transparent_bg = 1
-vim.cmd [[set background=light]]
 vim.cmd [[colorscheme gruvbox]]
-
--- vim.g.gruvbox_transparent_bg = 0
 
 -- netrw preferences
 vim.g.netrw_browse_split = 0
