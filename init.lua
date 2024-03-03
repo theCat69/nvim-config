@@ -78,7 +78,15 @@ require('lazy').setup({
     lazy = true,
   },
 
-  { 'rakr/vim-one' },              -- Theme inspired by Atom (light or dark theme)
+  -- themes
+  -- { "savq/melange-nvim" },
+  { 'morhetz/gruvbox' },
+  -- {
+  --   'projekt0n/github-nvim-theme',
+  --   lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+  --   priority = 1000, -- make sure to load this before all the other start plugins
+  -- },
+  -- { 'rakr/vim-one' },              -- Theme inspired by Atom (light or dark theme)
   -- { 'navarasu/onedark.nvim' },     -- Theme inspired by Atom (dark theme)
   { 'nvim-lualine/lualine.nvim' }, -- Fancier statusline
   { 'numToStr/Comment.nvim' },     -- "gc" to comment visual regions/lines
