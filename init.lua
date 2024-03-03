@@ -155,6 +155,15 @@ require('lazy').setup({
     lazy = true,
   },
 
+  -- drop bar insane shit
+  {
+    'Bekaboo/dropbar.nvim',
+    -- optional, but required for fuzzy finder support
+    dependencies = {
+      'nvim-telescope/telescope-fzf-native.nvim'
+    }
+  }
+
 })
 
 require('custom')
