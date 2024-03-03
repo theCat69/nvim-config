@@ -14,7 +14,7 @@ require('java').setup()
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
 local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'lua_ls', 'yamlls', 'lemminx',
-  'kotlin_language_server', 'html', 'cssls', 'bashls', 'jsonls', 'tailwindcss', 'zls', 'dockerls', 'solidity_ls' }
+  'kotlin_language_server', 'html', 'cssls', 'bashls', 'jsonls', 'tailwindcss', 'zls', 'dockerls', 'solidity_ls', 'taplo' }
 -- 'groovyls','gopls','solidity','solidity_ls_nomicfoundation',
 -- 'jdtls' => installed via nvim-java i can't figure how to configure it
 
