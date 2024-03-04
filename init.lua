@@ -20,21 +20,45 @@ vim.g.maplocalleader = ' '
 require('lazy').setup({
   -- Package manager
 
-  { -- LSP Configuration & Plugins
-    'neovim/nvim-lspconfig',
+  -- java painless plugin
+  {
+    'nvim-java/nvim-java',
     dependencies = {
-      -- Automatically install LSPs to stdpath for neovim
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-      'mfussenegger/nvim-jdtls',
+      'nvim-java/lua-async-await',
+      'nvim-java/nvim-java-core',
+      'nvim-java/nvim-java-test',
+      'nvim-java/nvim-java-dap',
+      'MunifTanjim/nui.nvim',
+      'neovim/nvim-lspconfig',
       'mfussenegger/nvim-dap',
-      'theHamsta/nvim-dap-virtual-text',
-      'rcarriga/nvim-dap-ui',
-      -- Useful status updates for LSP
+      {
+        'williamboman/mason.nvim',
+        opts = {
+          registries = {
+            'github:nvim-java/mason-registry',
+            'github:mason-org/mason-registry',
+          }
+        }
+      },
+      'williamboman/mason-lspconfig.nvim',
+      --     -- Useful status updates for LSP
       { 'j-hui/fidget.nvim', tag = 'legacy' },
-    },
-    lazy = true,
+    }
   },
+
+  -- { -- LSP Configuration & Plugins
+  --   'neovim/nvim-lspconfig',
+  --   dependencies = {
+  --     -- Automatically install LSPs to stdpath for neovim
+  --     'williamboman/mason.nvim',
+  --     'williamboman/mason-lspconfig.nvim',
+  --     'mfussenegger/nvim-jdtls',
+  --     'mfussenegger/nvim-dap',
+  --     'theHamsta/nvim-dap-virtual-text',
+  --     'rcarriga/nvim-dap-ui',
+  --   },
+  --   lazy = true,
+  -- },
 
   -- a little plugin to update all mason packages
   { 'RubixDev/mason-update-all' },
@@ -172,28 +196,6 @@ require('lazy').setup({
     }
   },
 
-  -- java painless plugin
-  {
-    'nvim-java/nvim-java',
-    dependencies = {
-      'nvim-java/lua-async-await',
-      'nvim-java/nvim-java-core',
-      'nvim-java/nvim-java-test',
-      'nvim-java/nvim-java-dap',
-      'MunifTanjim/nui.nvim',
-      'neovim/nvim-lspconfig',
-      'mfussenegger/nvim-dap',
-      {
-        'williamboman/mason.nvim',
-        opts = {
-          registries = {
-            'github:nvim-java/mason-registry',
-            'github:mason-org/mason-registry',
-          }
-        }
-      }
-    }
-  }
 })
 
 require('custom')
