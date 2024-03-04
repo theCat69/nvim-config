@@ -12,6 +12,9 @@
     "globals": [
       "vim"
     ],
+    "disable": [
+      "deprecated"
+    ],
     "neededFileStatus": {
       "ambiguity-1": "Any",
       "assign-type-mismatch": "Any",

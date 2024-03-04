@@ -1,3 +1,4 @@
+-- i keep this as an example for programatic macros in neovim
 -- local function replace_with_translate()
 --   local s_buf, s_col, s_row = unpack(vim.fn.getpos("v"))
 --   local _, e_col, e_row = unpack(vim.fn.getpos("."))
