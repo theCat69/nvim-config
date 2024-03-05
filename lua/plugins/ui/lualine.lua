@@ -1,15 +1,7 @@
 -- Set lualine as statusline
 -- See `:help lualine.txt`
 
-local M = {}
-
-M.lazy = false
-
-M.plugin = {
-  'nvim-lualine/lualine.nvim'
-}
-
-M.setup = function()
+local function config()
   require('lualine').setup {
     options = {
       icons_enabled = false,
@@ -20,4 +12,12 @@ M.setup = function()
   }
 end
 
-return M
+
+---@type LazyPluginSpec[]
+return {
+  {
+    'nvim-lualine/lualine.nvim',
+    config = config,
+    lazy = false
+  }
+}

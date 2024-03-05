@@ -1,16 +1,4 @@
-local M = {}
-
-M.lazy = true
-
-M.plugin = {
-  'lewis6991/gitsigns.nvim',
-  dependencies = {
-    { 'tpope/vim-fugitive' },
-    { 'tpope/vim-rhubarb' },
-  }
-}
-
-function M.setup()
+local function gitsign_config()
   require('gitsigns').setup {
     signs = {
       add = { text = '+' },
@@ -22,4 +10,19 @@ function M.setup()
   }
 end
 
-return M
+---@type LazyPluginSpec[]
+return {
+  {
+    'lewis6991/gitsigns.nvim',
+    config = gitsign_config,
+    lazy = true
+  },
+  {
+    'tpope/vim-rhubarb',
+    lazy = true
+  },
+  {
+    'tpope/vim-fugitive',
+    lazy = true
+  },
+}

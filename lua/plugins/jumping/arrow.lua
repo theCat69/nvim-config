@@ -1,13 +1,5 @@
 -- a replacement for harpoon
-local M = {}
-
-M.lazy = true
-
-M.plugin = {
-  "otavioschwanck/arrow.nvim"
-}
-
-function M.setup()
+local function config()
   require('arrow').setup({
     show_icons = true,
     leader_key = ';', -- Recommended to be a single key
@@ -21,4 +13,11 @@ function M.setup()
   })
 end
 
-return M
+---@type LazyPluginSpec[]
+return {
+  {
+    "otavioschwanck/arrow.nvim",
+    config = config,
+    lazy = true
+  }
+}

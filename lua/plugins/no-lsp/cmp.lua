@@ -1,14 +1,5 @@
 -- nvim-cmp and snippet
-local M = {}
-
-M.lazy = false
-
-M.plugin = {
-  'hrsh7th/nvim-cmp',
-  dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
-}
-
-function M.setup()
+local function config()
   local cmp = require 'cmp'
   local luasnip = require 'luasnip'
 
@@ -52,4 +43,11 @@ function M.setup()
   }
 end
 
-return M
+---@type LazyPluginSpec[]
+return {
+  {
+    'hrsh7th/nvim-cmp',
+    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+    config = config
+  }
+}

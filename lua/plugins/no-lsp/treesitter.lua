@@ -1,71 +1,87 @@
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
-require('nvim-treesitter.configs').setup {
-  -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'java', 'yaml', 'kotlin', 'tsx', 'bash', 'groovy', 'zig', 'solidity' },
+local function config()
+  require('nvim-treesitter.configs').setup {
+    -- Add languages to be installed here that you want installed for treesitter
+    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'java', 'yaml', 'kotlin', 'tsx', 'bash', 'groovy', 'zig', 'solidity' },
 
-  sync_install = false,
-  ignore_install = {},
-  modules = {},
+    sync_install = false,
+    ignore_install = {},
+    modules = {},
 
-  auto_install = true,
+    auto_install = true,
 
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-  indent = { enable = true },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "gnn", -- set to `false` to disable one of the mappings
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm",
-    },
-  },
-  textobjects = {
-    select = {
+    highlight = {
       enable = true,
-      lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+      additional_vim_regex_highlighting = false,
+    },
+    indent = { enable = true },
+    incremental_selection = {
+      enable = true,
       keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ['gpa'] = '@parameter.outer',
-        ['gpi'] = '@parameter.inner',
-        ['gfo'] = '@function.outer',
-        ['gfi'] = '@function.inner',
-        ['gCa'] = '@class.outer',
-        ['gCi'] = '@class.inner',
+        init_selection = "gnn", -- set to `false` to disable one of the mappings
+        node_incremental = "grn",
+        scope_incremental = "grc",
+        node_decremental = "grm",
       },
     },
-    move = {
-      enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
-      goto_next_start = {
-        ['})'] = '@function.outer',
-        ['}}'] = '@class.outer',
+    textobjects = {
+      select = {
+        enable = true,
+        lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+        keymaps = {
+          -- You can use the capture groups defined in textobjects.scm
+          ['gpa'] = '@parameter.outer',
+          ['gpi'] = '@parameter.inner',
+          ['gfo'] = '@function.outer',
+          ['gfi'] = '@function.inner',
+          ['gCa'] = '@class.outer',
+          ['gCi'] = '@class.inner',
+        },
       },
-      goto_next_end = {
-        ['}('] = '@function.outer',
-        ['}{'] = '@class.outer',
+      move = {
+        enable = true,
+        set_jumps = true, -- whether to set jumps in the jumplist
+        goto_next_start = {
+          ['})'] = '@function.outer',
+          ['}}'] = '@class.outer',
+        },
+        goto_next_end = {
+          ['}('] = '@function.outer',
+          ['}{'] = '@class.outer',
+        },
+        goto_previous_start = {
+          ['{)'] = '@function.outer',
+          ['{}'] = '@class.outer',
+        },
+        goto_previous_end = {
+          ['{('] = '@function.outer',
+          ['{{'] = '@class.outer',
+        },
       },
-      goto_previous_start = {
-        ['{)'] = '@function.outer',
-        ['{}'] = '@class.outer',
-      },
-      goto_previous_end = {
-        ['{('] = '@function.outer',
-        ['{{'] = '@class.outer',
+      swap = {
+        enable = true,
+        swap_next = {
+          ['<leader>a'] = '@parameter.inner',
+        },
+        swap_previous = {
+          ['<leader>A'] = '@parameter.inner',
+        },
       },
     },
-    swap = {
-      enable = true,
-      swap_next = {
-        ['<leader>a'] = '@parameter.inner',
-      },
-      swap_previous = {
-        ['<leader>A'] = '@parameter.inner',
-      },
+  }
+end
+
+---@type LazyPluginSpec[]
+return {
+  {
+    'nvim-treesitter/nvim-treesitter',
+    build = function()
+      pcall(require('nvim-treesitter.install').update { with_sync = true })
+    end,
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
     },
-  },
+    config = config
+  }
 }

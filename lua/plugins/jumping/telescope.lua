@@ -1,23 +1,6 @@
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
-
-local M = {}
-
-M.lazy = true
-
-M.plugin = {
-  'nvim-telescope/telescope.nvim',
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-    {
-      'nvim-telescope/telescope-fzf-native.nvim',
-      build = 'make',
-      cond = vim.fn.executable 'make' == 1,
-    },
-  }
-}
-
-function M.setup()
+local function config()
   require('telescope').setup({
     defaults = {
       ripgrep_arguments = {
@@ -61,4 +44,19 @@ function M.setup()
   vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 end
 
-return M
+---@type LazyPluginSpec[]
+return {
+  {
+    'nvim-telescope/telescope.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build = 'make',
+        cond = vim.fn.executable 'make' == 1,
+      },
+    },
+    config = config,
+    lazy = true
+  }
+}

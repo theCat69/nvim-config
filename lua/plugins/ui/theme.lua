@@ -1,11 +1,4 @@
-local M = {}
-
-M.lazy = false
-
-M.plugin = {
-  'morhetz/gruvbox',
-  priority = 1000
-}
+--themes
 
 local function light_theme()
   vim.g.gruvbox_contrast_light = "hard"
@@ -19,7 +12,9 @@ local function dark_theme()
   vim.cmd [[set background=dark]]
 end
 
-M.setup = function(theme)
+local function config()
+  local theme = ""
+
   local os_theme = os.getenv('OS_THEME')
   -- overrided by env variable
   if os_theme ~= "" then
@@ -39,4 +34,11 @@ M.setup = function(theme)
   vim.cmd('highlight NonText guibg=none')
 end
 
-return M
+---@type LazyPluginSpec[]
+return {
+  {
+    'morhetz/gruvbox',
+    priority = 1000,
+    config = config
+  }
+}

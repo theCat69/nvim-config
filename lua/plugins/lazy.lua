@@ -1,29 +1,22 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
+local lazy = require("lazy");
+local lazy_utils = require("plugins.lazy-utils");
+
+lazy.bootstrap()
+
+lazy_utils.register_plugin(require("plugins.ui.theme"))
+lazy_utils.register_plugin(require("ui.lualine"))
+lazy_utils.register_plugin(require("plugins.ui.nvim-tree"))
+lazy_utils.register_plugin(require("plugins.jumping.telescope"))
+lazy_utils.register_plugin(require("plugins.ui.dropbar"))
+lazy_utils.register_plugin(require("plugins.jumping.arrow"))
+lazy_utils.register_plugin(require("plugins.git.git"))
+lazy_utils.register_plugin(require("plugins.no-lsp.treesitter"))
+lazy_utils.register_plugin(require("plugins.no-lsp.refactoring"))
+lazy_utils.register_plugin(require("plugins.no-lsp.cmp"))
+lazy_utils.register_plugin(require("plugins.no-lsp.misc"))
 
 -- here i should get all the plugins and merge it here
-require('lazy').setup(
-  require("plugins.lazy-utils").register_custom_plugins({
-    { require("plugins.ui.theme"),         { "light" } },
-    { require("plugins.ui.lualine") },
-    { require("plugins.ui.nvim-tree") },
-    { require("plugins.jumping.telescope") },
-    { require("plugins.ui.dropbar") },
-    { require("plugins.jumping.arrow") },
-    { require("plugins.git.git") },
-    { require("plugins.no-lsp.cmp") },
-    { require("plugins.no-lsp.comment") }
-  })
+require('lazy').setup(lazy_utils.get_plugins()
   {
     -- Package manager
 
@@ -77,45 +70,9 @@ require('lazy').setup(
       lazy = true,
     },
 
-    { -- Highlight, edit, and navigate code
-      'nvim-treesitter/nvim-treesitter',
-      build = function()
-        pcall(require('nvim-treesitter.install').update { with_sync = true })
-      end,
-      dependencies = {
-        'nvim-treesitter/nvim-treesitter-textobjects',
-      },
-    },
-
-
-
-    {
-      "windwp/nvim-autopairs",
-      config = function() require("nvim-autopairs").setup {} end,
-    },
 
     -- get doc for nvim lua code
     { "folke/neodev.nvim",        lazy = true },
-
-    -- just to get a nice file tree like in any code editors
-    -- it can slow down startup a lot on low spec device
-    {
-      'nvim-tree/nvim-tree.lua',
-      dependencies = {
-        'nvim-tree/nvim-web-devicons',
-      },
-      lazy = true,
-    },
-
-    -- refactoring good for typescript
-    {
-      "ThePrimeagen/refactoring.nvim",
-      dependencies = {
-        { "nvim-lua/plenary.nvim" },
-        { "nvim-treesitter/nvim-treesitter" }
-      },
-    },
-
 
     -- rust additional tools
     {
