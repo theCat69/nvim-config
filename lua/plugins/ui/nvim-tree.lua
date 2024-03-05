@@ -34,7 +34,6 @@ return {
     dependencies = {
       'nvim-tree/nvim-web-devicons',
     },
-    config = config,
-    lazy = true
+    config = config
   }
 }

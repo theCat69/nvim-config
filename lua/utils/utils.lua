@@ -29,12 +29,12 @@
 --
 -- vim.keymap.set('v', '<leader>tt', replace_with_translate, { noremap = true, silent = true })
 
-local M = {}
-
-M.format_basic_nvim = function()
-  vim.api.nvim_input('mu')
-  vim.api.nvim_input('gg=G')
-  vim.api.nvim_input('xu')
-end
-
-return M
+-- local M = {}
+--
+-- M.format_basic_nvim = function()
+--   vim.api.nvim_input('mu')
+--   vim.api.nvim_input('gg=G')
+--   vim.api.nvim_input('xu')
+-- end
+--
+-- return M

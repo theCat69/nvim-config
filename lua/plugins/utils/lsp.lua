@@ -41,16 +41,10 @@ function M.on_attach(_, bufnr)
   end, '[W]orkspace [L]ist Folders')
   -- Create a command `:Format` local to the LSP buffer
 
-  -- local format = function(_)
-  --   if vim.lsp.buf.format then
-  --     vim.lsp.buf.format({ timeout_ms = 2000 })
-  --   elseif vim.lsp.buf.formatting then
-  --     vim.lsp.buf.formatting()
-  --   end
-  -- end
-  --
-  -- nmap('<A-l>', format, 'Format Code')
-  -- vim.api.nvim_buf_create_user_command(bufnr, 'Format', format, { desc = 'Format current buffer with LSP' })
+  -- Register format on <A-l>
+  require("plugins.utils.format").format_lsp_set_key()
+  -- Register format on save autocmd
+  require("plugins.utils.format").format_lsp_autocmd()
 end
 
 return M

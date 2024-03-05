@@ -1,5 +1,7 @@
 -- nvim-cmp and snippet
 local function config()
+  require("luasnip.loaders.from_vscode").lazy_load({})
+
   local cmp = require 'cmp'
   local luasnip = require 'luasnip'
 
