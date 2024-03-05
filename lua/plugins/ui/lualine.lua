@@ -1,6 +1,5 @@
 -- Set lualine as statusline
 -- See `:help lualine.txt`
-
 local function config()
   require('lualine').setup {
     options = {

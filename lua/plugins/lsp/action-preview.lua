@@ -1,5 +1,11 @@
 local function config()
-  vim.keymap.set({ "v", "n" }, "gt", require("actions-preview").code_actions)
+  -- handling theme switch between dark and light
+  local theme = require("plugins.ui.theme-metadata").theme
+  local delta_string_theme = ""
+  if theme == "light" then
+    delta_string_theme = " --light --syntax-theme GitHub"
+  end
+
   require("actions-preview").setup {
     telescope = {
       sorting_strategy = "ascending",
@@ -15,9 +21,10 @@ local function config()
       },
     },
     highlight_command = {
-      require("actions-preview.highlight").delta("delta --no-gitconfig --side-by-side --file-style 'omit'"),
+      require("actions-preview.highlight").delta("delta --no-gitconfig --side-by-side --file-style 'omit'" .. delta_string_theme),
     }
   }
+  vim.keymap.set({ "v", "n" }, "gt", require("actions-preview").code_actions)
 end
 
 ---@type LazyPluginSpec[]

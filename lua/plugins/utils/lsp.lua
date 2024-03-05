@@ -2,7 +2,7 @@
 local M = {}
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
-function M.on_attach(_, bufnr)
+function M.on_attach(event)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
   -- many times.
@@ -12,9 +12,11 @@ function M.on_attach(_, bufnr)
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
+    else
+      desc = ""
     end
 
-    vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+    vim.keymap.set('n', keys, func, { buffer = event.buf, desc = desc })
   end
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')

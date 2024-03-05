@@ -56,7 +56,6 @@ return {
         cond = vim.fn.executable 'make' == 1,
       },
     },
-    config = config,
-    lazy = true
+    config = config
   }
 }

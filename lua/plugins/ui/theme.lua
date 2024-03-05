@@ -1,5 +1,4 @@
 --themes
-
 local function light_theme()
   vim.g.gruvbox_contrast_light = "hard"
   vim.g.gruvbox_improved_warnings = 1
@@ -13,16 +12,11 @@ local function dark_theme()
 end
 
 local function config()
-  local theme = ""
-
-  local os_theme = os.getenv('OS_THEME')
-  -- overrided by env variable
-  if os_theme ~= "" then
-    theme = os_theme
-  end
+  local theme = require("plugins.ui.theme-metadata").init_theme()
 
   if theme == 'dark' or theme == 'DARK' or theme == 'Dark' then
     dark_theme()
+    require("plugins.ui.theme-metadata").theme = theme
   else
     light_theme()
   end

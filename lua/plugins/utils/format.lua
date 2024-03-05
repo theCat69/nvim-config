@@ -12,7 +12,7 @@ function M.format_vim()
 end
 
 function M.format_vim_set_key()
-  vim.keymap.set("n", format_key_binding, format_vim_input)
+  vim.keymap.set("n", format_key_binding, M.format_vim)
 end
 
 function M.format_lsp_set_key()
@@ -31,8 +31,8 @@ end
 function M.format_vim_autocmd()
   -- format on save using vim (possibly treesitter)
   vim.api.nvim_create_autocmd('BufWritePre', {
-    group = vim.api.nvim_create_augroup('onSaveEventSolidity', { clear = true }),
-    pattern = { "*.sol" }, -- supported format on save
+    group = vim.api.nvim_create_augroup('onSaveEvent', { clear = true }),
+    pattern = { "*.sol", ".gitconfig" }, -- supported format on save
     callback = M.format_vim,
   })
 end
