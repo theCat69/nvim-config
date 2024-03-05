@@ -1,5 +1,7 @@
 local function config()
-  require('refactoring').setup({})
+  require('refactoring').setup({
+    show_success_message = true
+  })
 
   -- load refactoring Telescope extension
   require("telescope").load_extension("refactoring")

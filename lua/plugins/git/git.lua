@@ -15,14 +15,11 @@ return {
   {
     'lewis6991/gitsigns.nvim',
     config = gitsign_config,
-    lazy = true
   },
   {
     'tpope/vim-rhubarb',
-    lazy = true
   },
   {
     'tpope/vim-fugitive',
-    lazy = true
   },
 }

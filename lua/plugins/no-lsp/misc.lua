@@ -14,11 +14,9 @@ return {
   {
     'numToStr/Comment.nvim',
     config = config_comment,
-    lazy = true
   },
   {
     "windwp/nvim-autopairs",
     config = config_autopairs,
-    lazy = true
   },
 }

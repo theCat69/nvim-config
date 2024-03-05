@@ -17,7 +17,6 @@ end
 return {
   {
     "otavioschwanck/arrow.nvim",
-    config = config,
-    lazy = true
+    config = config
   }
 }

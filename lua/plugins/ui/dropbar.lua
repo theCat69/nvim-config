@@ -12,6 +12,5 @@ return {
       'nvim-telescope/telescope-fzf-native.nvim'
     },
     config = config,
-    lazy = true
   }
 }

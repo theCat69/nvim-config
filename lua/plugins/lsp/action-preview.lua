@@ -25,6 +25,5 @@ return {
   {
     "aznhe21/actions-preview.nvim",
     config = config,
-    lazy = true,
   }
 }
