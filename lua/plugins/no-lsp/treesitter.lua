@@ -28,11 +28,11 @@ local function config()
         lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
         keymaps = {
           -- You can use the capture groups defined in textobjects.scm
-          ['gpa'] = '@parameter.outer',
+          ['gpo'] = '@parameter.outer',
           ['gpi'] = '@parameter.inner',
           ['gfo'] = '@function.outer',
           ['gfi'] = '@function.inner',
-          ['gCa'] = '@class.outer',
+          ['gCo'] = '@class.outer',
           ['gCi'] = '@class.inner',
         },
       },
@@ -40,18 +40,26 @@ local function config()
         enable = true,
         set_jumps = true, -- whether to set jumps in the jumplist
         goto_next_start = {
+          ['gnso'] = '@parameter.outer',
+          ['gnsi'] = '@parameter.inner',
           ['})'] = '@function.outer',
           ['}}'] = '@class.outer',
         },
         goto_next_end = {
+          ['gneo'] = '@parameter.outer',
+          ['gnei'] = '@parameter.inner',
           ['}('] = '@function.outer',
           ['}{'] = '@class.outer',
         },
         goto_previous_start = {
+          ['gpso'] = '@parameter.outer',
+          ['gpsi'] = '@parameter.inner',
           ['{)'] = '@function.outer',
           ['{}'] = '@class.outer',
         },
         goto_previous_end = {
+          ['gpeo'] = '@parameter.outer',
+          ['gpei'] = '@parameter.inner',
           ['{('] = '@function.outer',
           ['{{'] = '@class.outer',
         },

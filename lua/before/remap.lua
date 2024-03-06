@@ -60,3 +60,7 @@ vim.keymap.set('n', '<A-v>', '<C-v>')
 vim.keymap.set('n', 'x', '`')
 -- Delete all marks
 vim.keymap.set('n', '<leader>dam', ':delm A-Z <CR>')
+
+-- format on <A-l> or on save for supported file pattern
+require("plugins.utils.format").format_vim_set_key()
+require("plugins.utils.format").format_vim_autocmd()
