@@ -4,12 +4,12 @@ local format_key_binding = "<A-l>"
 local format_vim_input = "mugg=Gxu"
 
 local function active_client_format_supported()
-  for _, client in ipairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
+  for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
     if client and client.supports_method("textDocument/formatting") then
       return true
     end
-    return false
   end
+  return false
 end
 
 function M.format_lsp()
@@ -40,7 +40,7 @@ function M.format_lsp_autocmd()
   -- format on save using lsp
   vim.api.nvim_create_autocmd('BufWritePre', {
     group = vim.api.nvim_create_augroup('onSaveEvent', { clear = true }),
-    pattern = { "*.rs", "*.ts", "*.tsx", "*.html", "*.css", "*.py", "*.xml", "*.json", "*.yml", "*.js", "*.lua", "*.sol" }, -- supported format on save
+    pattern = { "*.rs", "*.ts", "*.tsx", "*.html", "*.css", "*.py", "*.xml", "*.json", "*.yml", "*.js", "*.lua", "*.sol", "*.java" }, -- supported format on save
     callback = M.format_lsp_with_fallback,
   })
 end
