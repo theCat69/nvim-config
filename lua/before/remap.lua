@@ -13,9 +13,16 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- past from clipboard
-vim.keymap.set("v", '<C-b>', '"*y')
-vim.keymap.set("n", '<C-b>', '"*p')
-vim.keymap.set("c", '<C-b>', '"*p')
+-- if on windows
+if string.find(vim.loop.os_uname().sysname, "NT") then
+  vim.keymap.set("v", '<C-b>', '"*y')
+  vim.keymap.set("n", '<C-b>', '"*p')
+  vim.keymap.set("c", '<C-b>', '"*p')
+else -- supposing linux system otherwise
+  vim.keymap.set("v", '<C-b>', '"+y')
+  vim.keymap.set("n", '<C-b>', '"+p')
+  vim.keymap.set("c", '<C-b>', '"+p')
+end
 
 -- exit edit mode to go back to normal mode
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-c>', "<Esc>l")
@@ -53,3 +60,7 @@ vim.keymap.set('n', '<A-v>', '<C-v>')
 vim.keymap.set('n', 'x', '`')
 -- Delete all marks
 vim.keymap.set('n', '<leader>dam', ':delm A-Z <CR>')
+
+-- format on <A-l> or on save for supported file pattern
+require("plugins.utils.format").format_vim_set_key()
+require("plugins.utils.format").format_vim_autocmd()

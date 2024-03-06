@@ -9,3 +9,11 @@ If you use windows as well and want to use neovim as your editor I recommend you
 To get a fully customize terminal experience i also use [wezterm](https://github.com/wez/wezterm) coupled with [clink](https://github.com/chrisant996/clink).
 You can find my configuration for both of them here : [wezterm-config](https://github.com/theCat69/wezterm-config) & [clink-config](https://github.com/theCat69/clink-config).
 
+## Sed ls command to get all plugins loaded into lua path
+
+run this command and past output to luarc.json workspace value
+```sh
+ls -1 | sed 's/\(.*\)/"$NVIM_DATA\/lazy\/\1\/lua",/'
+```
+
+

@@ -1,22 +1,12 @@
 -- [[ Setting options ]]
 -- See `:help vim.o`
+--
+-- Set <space> as the leader key
+-- See `:help mapleader`
+--  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+vim.g.mapleader = ' '
 
--- adding clipboard definition for unix
--- if vim.loop.os_uname().sysname == 'Linux'
--- then
---   vim.g.clipboard = {
---     name = 'OSC 52',
---     copy = {
---       ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
---       ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
---     },
---     paste = {
---       ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
---       ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
---     },
---   }
--- end
-
+vim.g.maplocalleader = ' '
 -- Make line numbers default
 vim.wo.number = true
 

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+  "runtime.version": "Lua 5.4",
+  "workspace": {
+    "library": [
+      "$VIMRUNTIME/lua/",
+      "${3rd}/luv/library",
+      "$DOTFILES/.config/nvim/lua",
+      "$NVIM_DATA/lazy/actions-preview.nvim/lua",
+      "$NVIM_DATA/lazy/arrow.nvim/lua",
+      "$NVIM_DATA/lazy/cmp-nvim-lsp/lua",
+      "$NVIM_DATA/lazy/cmp_luasnip/lua",
+      "$NVIM_DATA/lazy/Comment.nvim/lua",
+      "$NVIM_DATA/lazy/dropbar.nvim/lua",
+      "$NVIM_DATA/lazy/fidget.nvim/lua",
+      "$NVIM_DATA/lazy/friendly-snippets/lua",
+      "$NVIM_DATA/lazy/gitsigns.nvim/lua",
+      "$NVIM_DATA/lazy/gruvbox/lua",
+      "$NVIM_DATA/lazy/lazy.nvim/lua",
+      "$NVIM_DATA/lazy/lua-async-await/lua",
+      "$NVIM_DATA/lazy/lualine.nvim/lua",
+      "$NVIM_DATA/lazy/LuaSnip/lua",
+      "$NVIM_DATA/lazy/mason-lspconfig.nvim/lua",
+      "$NVIM_DATA/lazy/mason-update-all/lua",
+      "$NVIM_DATA/lazy/mason.nvim/lua",
+      "$NVIM_DATA/lazy/neodev.nvim/lua",
+      "$NVIM_DATA/lazy/nginx.vim/lua",
+      "$NVIM_DATA/lazy/nui.nvim/lua",
+      "$NVIM_DATA/lazy/nvim-autopairs/lua",
+      "$NVIM_DATA/lazy/nvim-cmp/lua",
+      "$NVIM_DATA/lazy/nvim-dap/lua",
+      "$NVIM_DATA/lazy/nvim-dap-ui/lua",
+      "$NVIM_DATA/lazy/nvim-java/lua",
+      "$NVIM_DATA/lazy/nvim-java-core/lua",
+      "$NVIM_DATA/lazy/nvim-java-dap/lua",
+      "$NVIM_DATA/lazy/nvim-java-test/lua",
+      "$NVIM_DATA/lazy/nvim-jenkinsfile-linter/lua",
+      "$NVIM_DATA/lazy/nvim-lspconfig/lua",
+      "$NVIM_DATA/lazy/nvim-tree.lua/lua",
+      "$NVIM_DATA/lazy/nvim-treesitter/lua",
+      "$NVIM_DATA/lazy/nvim-treesitter-textobjects/lua",
+      "$NVIM_DATA/lazy/nvim-web-devicons/lua",
+      "$NVIM_DATA/lazy/plenary.nvim/lua",
+      "$NVIM_DATA/lazy/readme/lua",
+      "$NVIM_DATA/lazy/refactoring.nvim/lua",
+      "$NVIM_DATA/lazy/rust-tools.nvim/lua",
+      "$NVIM_DATA/lazy/telescope-fzf-native.nvim/lua",
+      "$NVIM_DATA/lazy/telescope.nvim/lua",
+      "$NVIM_DATA/lazy/vim-fugitive/lua",
+      "$NVIM_DATA/lazy/vim-rhubarb/lua"
+    ]
+  },
+  "diagnostics": {
+    "globals": [
+      "vim"
+    ]
+  }
+}
