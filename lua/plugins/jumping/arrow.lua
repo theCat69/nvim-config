@@ -9,7 +9,8 @@ local function config()
       row = "auto",
       col = "auto",
       border = "double",
-    }
+    },
+    index_keys = "azertyuiopAZERTYUIOP123456789"
   })
 end
 
