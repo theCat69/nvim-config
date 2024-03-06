@@ -49,7 +49,7 @@ function M.format_vim_autocmd()
   -- format on save using vim (possibly treesitter)
   vim.api.nvim_create_autocmd('BufWritePre', {
     group = vim.api.nvim_create_augroup('onSaveEvent', { clear = true }),
-    pattern = { ".gitconfig" }, -- supported format on save
+    pattern = { "*.groovy", ".gitconfig", "nginx.conf", "https_server.conf" }, -- supported format on save
     callback = M.format_vim,
   })
 end
