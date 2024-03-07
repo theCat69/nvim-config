@@ -13,6 +13,7 @@ end
 return {
   {
     'numToStr/Comment.nvim',
+    keys = { "gc" },
     config = config_comment,
   },
   {

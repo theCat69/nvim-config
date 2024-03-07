@@ -26,5 +26,6 @@ lazy_utils.register_plugin(require("plugins.no-lsp.cmp"))
 lazy_utils.register_plugin(require("plugins.no-lsp.misc"))
 lazy_utils.register_plugin(require("plugins.lsp.action-preview"))
 lazy_utils.register_plugin(require("plugins.lsp.lsp"))
+lazy_utils.register_plugin(require("plugins.lsp.sql"))
 
 require('lazy').setup(lazy_utils.get_plugins())

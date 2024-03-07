@@ -1,3 +1,9 @@
+-- filtypes to load all the lsp plugins
+local ft = {
+  "java", "lua", "sql", "rust", "xml", "json", "solidity", "typescript", "javascript", "html", "css",
+  "python", "kotlin", "zig", "docker", "toml", "yaml", "c", "bash"
+}
+
 local function config()
   -- jdtls support
   require('java').setup()
@@ -33,6 +39,7 @@ return {
   {
     'nvim-java/nvim-java',
     config = config,
+    ft = ft,
     dependencies = {
       'nvim-java/lua-async-await',
       'nvim-java/nvim-java-core',
@@ -66,10 +73,12 @@ return {
   -- Jenkinsfile validation
   {
     "ckipp01/nvim-jenkinsfile-linter",
+    ft = { "groovy " }
   },
 
   -- nginx
   {
     "chr4/nginx.vim",
+    ft = { "nginx" }
   },
 }
