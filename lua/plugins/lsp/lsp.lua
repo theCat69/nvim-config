@@ -30,9 +30,6 @@ local function config()
   -- and specific for some
   require("plugins.lsp.lsp-server-config").lsp_server_config()
 
-  -- Turn on lsp status information
-  require('fidget').setup()
-
   -- Simple command to update all packages
   require('mason-update-all').setup()
 end
@@ -55,7 +52,6 @@ return {
           require("plugins.lsp.dap")
         }
       },
-      { 'j-hui/fidget.nvim', tag = 'legacy' },
       {
         'neovim/nvim-lspconfig',
         dependencies = {
