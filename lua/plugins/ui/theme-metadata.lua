@@ -21,7 +21,7 @@ function M.is_dark_theme()
   return M.theme == "dark" or M.theme == "Dark" or M.theme == "DARK"
 end
 
-function M.is_white_theme()
+function M.is_light_theme()
   return not M.is_dark_theme()
 end
 

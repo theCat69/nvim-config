@@ -12,11 +12,8 @@ local function dark_theme()
 end
 
 local function config()
-  local theme = require("plugins.ui.theme-metadata").init_theme()
-
-  if theme == 'dark' or theme == 'DARK' or theme == 'Dark' then
+  if require("plugins.ui.theme-metadata").is_dark_theme() then
     dark_theme()
-    require("plugins.ui.theme-metadata").theme = theme
   else
     light_theme()
   end

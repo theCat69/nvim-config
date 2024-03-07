@@ -1,8 +1,7 @@
 local function config()
   -- handling theme switch between dark and light
-  local theme = require("plugins.ui.theme-metadata").theme
   local delta_string_theme = ""
-  if theme == "light" then
+  if require("plugins.ui.theme-metadata").is_light_theme() then
     delta_string_theme = " --light --syntax-theme GitHub"
   end
 
