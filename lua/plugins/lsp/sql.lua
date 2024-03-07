@@ -1,3 +1,4 @@
+-- cmd that lazy load the ui plugin and dadbod
 local cmd = {
   'DBUI',
   'DBUIToggle',
@@ -5,6 +6,7 @@ local cmd = {
   'DBUIFindBuffer',
 }
 
+-- filetypes that enable dadbod completion
 local ft = {
   'sql', 'mysql', 'plsql'
 }
@@ -20,8 +22,8 @@ return {
   {
     'kristijanhusak/vim-dadbod-ui',
     dependencies = {
-      { 'tpope/vim-dadbod',                     lazy = true },
-      { 'kristijanhusak/vim-dadbod-completion', ft = ft,   lazy = true },
+      'tpope/vim-dadbod',
+      { 'kristijanhusak/vim-dadbod-completion', ft = ft },
     },
     cmd = cmd,
     init = init,

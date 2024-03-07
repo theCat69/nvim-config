@@ -2,6 +2,7 @@ local M = {}
 
 function M.lsp_server_config()
   -- this will be run when an LSP attach to the buffer (replacing on_attach)
+  -- the callback definition is in another file
   vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('fefou-lsp-attach', { clear = true }),
     callback = require('plugins.utils.lsp').on_attach
