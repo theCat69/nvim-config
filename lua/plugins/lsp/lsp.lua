@@ -4,6 +4,9 @@ local ft = {
   "python", "kotlin", "zig", "docker", "toml", "yaml", "c", "bash"
 }
 
+-- cmd that trigger the load of all lsp plugins
+local cmd = { "MasonUpdate", "MasonUpdateAll" }
+
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here.
 -- servers automatically installed by mason
@@ -40,6 +43,7 @@ return {
     'nvim-java/nvim-java',
     config = config,
     ft = ft,
+    cmd = cmd,
     dependencies = {
       'nvim-java/lua-async-await',
       'nvim-java/nvim-java-core',
