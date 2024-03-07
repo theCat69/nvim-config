@@ -27,10 +27,8 @@ local function config()
   vim.keymap.set({ "v", "n" }, "gt", require("actions-preview").code_actions)
 end
 
----@type LazyPluginSpec[]
+---@type LazyPluginSpec
 return {
-  {
-    "aznhe21/actions-preview.nvim",
-    config = config,
-  }
+  "aznhe21/actions-preview.nvim",
+  config = config,
 }

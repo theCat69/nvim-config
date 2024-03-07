@@ -18,7 +18,9 @@ local function config()
   -- jdtls/java support
   require('java').setup()
 
-  require('neodev').setup()
+  require('neodev').setup({
+    library = { plugins = { "nvim-dap-ui" }, types = true },
+  })
 
   require('mason-lspconfig').setup {
     ensure_installed = servers,
@@ -49,7 +51,6 @@ return {
       'MunifTanjim/nui.nvim',
       {
         "folke/neodev.nvim",
-        library = { plugins = { "nvim-dap-ui" }, types = true },
         dependencies = {
           require("plugins.lsp.dap")
         }

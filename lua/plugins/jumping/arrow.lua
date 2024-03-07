@@ -14,10 +14,8 @@ local function config()
   })
 end
 
----@type LazyPluginSpec[]
+---@type LazyPluginSpec
 return {
-  {
-    "otavioschwanck/arrow.nvim",
-    config = config
-  }
+  "otavioschwanck/arrow.nvim",
+  config = config
 }

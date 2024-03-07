@@ -17,15 +17,13 @@ local function config()
   )
 end
 
----@type LazyPluginSpec[]
+---@type LazyPluginSpec
 return {
-  {
-    "ThePrimeagen/refactoring.nvim",
-    dependencies = {
-      { "nvim-lua/plenary.nvim" },
-      { "nvim-treesitter/nvim-treesitter" }
-    },
-    config = config,
-    keys = keymap
-  }
+  "ThePrimeagen/refactoring.nvim",
+  dependencies = {
+    { "nvim-lua/plenary.nvim" },
+    { "nvim-treesitter/nvim-treesitter" }
+  },
+  config = config,
+  keys = keymap
 }

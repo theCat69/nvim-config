@@ -4,16 +4,22 @@ local M = {}
 
 local plugins = {}
 
-function M.append_table_array(tab, tab_to_append)
+function M.append_tables_array(tab, tab_to_append)
   for _, v in ipairs(tab_to_append) do
     table.insert(tab, v)
   end
 end
 
 ---Register one or more plugins
----@param plug LazyPluginSpec[] array of lazy plugins
+---@param plug LazyPluginSpec|LazyPluginSpec[]
 function M.register_plugin(plug)
-  M.append_table_array(plugins, plug)
+  local pluginSpec = unpack(plug)
+  -- this means the file return a LazyPluginSpec
+  if type(pluginSpec) ~= "table" then
+    table.insert(plugins, plug)
+  else -- assuming a LazyPluginSpec[] otherwise
+    M.append_tables_array(plugins, plug)
+  end
 end
 
 ---@return LazyPluginSpec[]

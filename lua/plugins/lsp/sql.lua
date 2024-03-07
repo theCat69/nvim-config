@@ -17,15 +17,13 @@ local function init()
   vim.keymap.set("n", "<leader>sql", "<Cmd>DBUIToggle<CR>")
 end
 
----@type LazyPluginSpec[]
+---@type LazyPluginSpec
 return {
-  {
-    'kristijanhusak/vim-dadbod-ui',
-    dependencies = {
-      'tpope/vim-dadbod',
-      { 'kristijanhusak/vim-dadbod-completion', ft = ft },
-    },
-    cmd = cmd,
-    init = init,
-  }
+  'kristijanhusak/vim-dadbod-ui',
+  dependencies = {
+    'tpope/vim-dadbod',
+    { 'kristijanhusak/vim-dadbod-completion', ft = ft },
+  },
+  cmd = cmd,
+  init = init,
 }

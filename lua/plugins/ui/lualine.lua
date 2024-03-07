@@ -12,11 +12,9 @@ local function config()
 end
 
 
----@type LazyPluginSpec[]
+---@type LazyPluginSpec
 return {
-  {
-    'nvim-lualine/lualine.nvim',
-    config = config,
-    lazy = false
-  }
+  'nvim-lualine/lualine.nvim',
+  config = config,
+  lazy = false
 }
