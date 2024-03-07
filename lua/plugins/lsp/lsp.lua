@@ -47,7 +47,13 @@ return {
       'nvim-java/nvim-java-test',
       'nvim-java/nvim-java-dap',
       'MunifTanjim/nui.nvim',
-      'mfussenegger/nvim-dap',
+      {
+        "folke/neodev.nvim",
+        library = { plugins = { "nvim-dap-ui" }, types = true },
+        dependencies = {
+          require("plugins.lsp.dap")
+        }
+      },
       { 'j-hui/fidget.nvim', tag = 'legacy' },
       {
         'neovim/nvim-lspconfig',
@@ -63,7 +69,6 @@ return {
           },
           'williamboman/mason-lspconfig.nvim',
           'RubixDev/mason-update-all',
-          "folke/neodev.nvim"
         }
       },
     }

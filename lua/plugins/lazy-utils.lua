@@ -4,12 +4,16 @@ local M = {}
 
 local plugins = {}
 
+function M.append_table_array(tab, tab_to_append)
+  for _, v in ipairs(tab_to_append) do
+    table.insert(tab, v)
+  end
+end
+
 ---Register one or more plugins
 ---@param plug LazyPluginSpec[] array of lazy plugins
 function M.register_plugin(plug)
-  for _, v in ipairs(plug) do
-    table.insert(plugins, v)
-  end
+  M.append_table_array(plugins, plug)
 end
 
 ---@return LazyPluginSpec[]
