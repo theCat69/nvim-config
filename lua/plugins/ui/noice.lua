@@ -1,34 +1,22 @@
+local colors = require("metadata.ui").get_colors()
+
 local function theme_colorscheme()
-  local red = "#9D0006"
-  local orange = "#AF3A03"
-  local green = "#79740E"
-  local blue = "#076678"
-  local purple = "#8F3F71"
-
-  if require("plugins.ui.theme-metadata").is_dark_theme() then
-    red = "#FB4934"
-    orange = "#FE8019"
-    green = "#B8BB26"
-    blue = "#83A598"
-    purple = "#D3869B"
-  end
-
-  vim.cmd("highlight NotifyERRORTitle  guifg=" .. red)
-  vim.cmd("highlight NotifyWARNTitle guifg=" .. orange)
-  vim.cmd("highlight NotifyINFOTitle guifg=" .. green)
-  vim.cmd("highlight NotifyDEBUGTitle  guifg=" .. blue)
-  vim.cmd("highlight NotifyTRACETitle  guifg=" .. purple)
-  vim.cmd("highlight NotifyERRORIcon guifg=" .. red)
-  vim.cmd("highlight NotifyWARNIcon guifg=" .. orange)
-  vim.cmd("highlight NotifyINFOIcon guifg=" .. green)
-  vim.cmd("highlight NotifyDEBUGIcon guifg=" .. blue)
-  vim.cmd("highlight NotifyTRACEIcon guifg=" .. purple)
+  vim.cmd("highlight NotifyERRORTitle  guifg=" .. colors.red)
+  vim.cmd("highlight NotifyWARNTitle guifg=" .. colors.orange)
+  vim.cmd("highlight NotifyINFOTitle guifg=" .. colors.green)
+  vim.cmd("highlight NotifyDEBUGTitle  guifg=" .. colors.blue)
+  vim.cmd("highlight NotifyTRACETitle  guifg=" .. colors.purple)
+  vim.cmd("highlight NotifyERRORIcon guifg=" .. colors.red)
+  vim.cmd("highlight NotifyWARNIcon guifg=" .. colors.orange)
+  vim.cmd("highlight NotifyINFOIcon guifg=" .. colors.green)
+  vim.cmd("highlight NotifyDEBUGIcon guifg=" .. colors.blue)
+  vim.cmd("highlight NotifyTRACEIcon guifg=" .. colors.purple)
 end
 
 local function config()
   ---@diagnostic disable-next-line: missing-fields
   require("notify").setup({
-    background_colour = "#D3D3D3",
+    background_colour = colors.background_secondary,
   })
   -- for notify nvim
   theme_colorscheme()
