@@ -6,14 +6,15 @@ local theme = "light"
 
 local initialized = false
 
+---Defining colorscheme for current theme
 ---@class Colors
 ---@field red string
 ---@field orange string
 ---@field green string
 ---@field blue string
 ---@field purple string
----@field background string
----@field background_secondary string
+---@field background string not used right now
+---@field background_secondary string not used right now
 
 ---@type Colors
 local colors_light = {
@@ -34,6 +35,7 @@ local colors_dark = {
   blue = "#83A598",
   purple = "#D3869B",
   -- should check background for dark theme and probably change it
+  -- for now it is not used so who cares ?
   background = "#000000",
   background_secondary = "#D3D3D3"
 }
@@ -43,7 +45,7 @@ local colors = colors_light
 local function init_theme()
   local os_theme = os.getenv('OS_THEME')
   -- overrided by env variable
-  if os_theme ~= "" then
+  if os_theme ~= nil then
     theme = os_theme
   end
   initialized = true
