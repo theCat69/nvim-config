@@ -17,6 +17,8 @@ local function config()
   ---@diagnostic disable-next-line: missing-fields
   require("notify").setup({
     background_colour = colors.background_secondary,
+    stages = "fade",
+    timeout = 100,
   })
   -- for notify nvim
   theme_colorscheme()
