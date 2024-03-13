@@ -18,7 +18,7 @@ local function config()
   require("notify").setup({
     background_colour = colors.background_secondary,
     stages = "fade",
-    timeout = 100,
+    timeout = 1000,
   })
   -- for notify nvim
   theme_colorscheme()
