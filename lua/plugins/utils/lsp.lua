@@ -42,6 +42,8 @@ function M.on_attach(event)
   end, '[W]orkspace [L]ist Folders')
   -- Create a command `:Format` local to the LSP buffer
 
+  -- Activate deactivate formatting with <A-L>
+  require("plugins.utils.format").format_activated_switch_set_key()
   -- Register format on <A-l>
   require("plugins.utils.format").format_lsp_set_key()
   -- Register format on save autocmd

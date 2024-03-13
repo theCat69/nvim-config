@@ -12,12 +12,34 @@ local function active_client_format_supported()
   return false
 end
 
+local activated = true
+
+function M.deactivate()
+  activated = false
+end
+
+function M.activate()
+  activated = true
+end
+
+function M.activate_switch()
+  if activated then
+    M.deactivate()
+  else
+    M.activate()
+  end
+end
+
 function M.format_lsp()
-  vim.lsp.buf.format({ sync = true })
+  if activated then
+    vim.lsp.buf.format({ sync = true })
+  end
 end
 
 function M.format_vim()
-  vim.api.nvim_input(format_vim_input)
+  if activated then
+    vim.api.nvim_input(format_vim_input)
+  end
 end
 
 function M.format_lsp_with_fallback()
@@ -26,6 +48,10 @@ function M.format_lsp_with_fallback()
   else
     M.format_vim()
   end
+end
+
+function M.format_activated_switch_set_key()
+  vim.keymap.set("n", "<A-L>", M.activate_switch)
 end
 
 function M.format_vim_set_key()
