@@ -109,10 +109,13 @@ end
 return {
   'theHamsta/nvim-dap-virtual-text',
   dependencies = {
-    "rcarriga/nvim-dap-ui",
-    dependencies = {
-      'mfussenegger/nvim-dap',
-    },
+    "nvim-neotest/nvim-nio",
+    {
+      "rcarriga/nvim-dap-ui",
+      dependencies = {
+        'mfussenegger/nvim-dap',
+      },
+    }
   },
   config = config
 }
