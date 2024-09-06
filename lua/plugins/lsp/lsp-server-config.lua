@@ -58,6 +58,22 @@ function M.lsp_server_config()
     end,
   }
 
+  -- configuring custom cairo
+  if not require("lspconfig.configs").cairo then
+    require("lspconfig.configs").cairo = {
+      default_config = {
+        cmd = { 'scarb', 'cairo-language-server' },
+        filetypes = { 'cairo' },
+        name = 'vscode-cairo',
+        root_dir = require("lspconfig").util.root_pattern('Scarb.toml'),
+      },
+    }
+  end
+
+  require("lspconfig").cairo.setup({
+    capabilities = capabilities,
+  });
+
   -- setup jdtls specifically
   require('lspconfig').jdtls.setup({
     capabilities = capabilities,
