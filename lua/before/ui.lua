@@ -9,4 +9,5 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 -- end specific to nvim-tree plugin
 
-vim.o.termguicolors = true
+-- it is set to false by default on my system i don't see how it is usefull right now ?
+-- vim.o.termguicolors = true

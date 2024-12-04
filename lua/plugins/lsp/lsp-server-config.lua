@@ -2,6 +2,7 @@ local M = {}
 
 function M.lsp_server_config()
   -- this will be run when an LSP attach to the buffer (replacing on_attach)
+  -- the callback definition is in another file
   vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('fefou-lsp-attach', { clear = true }),
     callback = require('plugins.utils.lsp').on_attach
@@ -56,6 +57,22 @@ function M.lsp_server_config()
       }
     end,
   }
+
+  -- configuring custom cairo
+  if not require("lspconfig.configs").cairo then
+    require("lspconfig.configs").cairo = {
+      default_config = {
+        cmd = { 'scarb', 'cairo-language-server' },
+        filetypes = { 'cairo' },
+        name = 'vscode-cairo',
+        root_dir = require("lspconfig").util.root_pattern('Scarb.toml'),
+      },
+    }
+  end
+
+  require("lspconfig").cairo.setup({
+    capabilities = capabilities,
+  });
 
   -- setup jdtls specifically
   require('lspconfig').jdtls.setup({

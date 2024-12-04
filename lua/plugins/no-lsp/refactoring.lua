@@ -1,3 +1,5 @@
+local keymap = "<leader>rr"
+
 local function config()
   require('refactoring').setup({
     show_success_message = true
@@ -9,21 +11,19 @@ local function config()
   -- remap to open the Telescope refactoring menu in visual mode
   vim.api.nvim_set_keymap(
     "v",
-    "<leader>rr",
+    keymap,
     "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
     { noremap = true }
   )
 end
 
----@type LazyPluginSpec[]
+---@type LazyPluginSpec
 return {
-  {
-    "ThePrimeagen/refactoring.nvim",
-    dependencies = {
-      { "nvim-lua/plenary.nvim" },
-      { "nvim-treesitter/nvim-treesitter" }
-    },
-    config = config,
-    lazy = true
-  }
+  "ThePrimeagen/refactoring.nvim",
+  dependencies = {
+    { "nvim-lua/plenary.nvim" },
+    { "nvim-treesitter/nvim-treesitter" }
+  },
+  config = config,
+  keys = keymap
 }

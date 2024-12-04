@@ -3,7 +3,7 @@
 local function config()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'java', 'yaml', 'kotlin', 'tsx', 'bash', 'groovy', 'zig', 'solidity' },
+    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'java', 'yaml', 'kotlin', 'tsx', 'bash', 'groovy', 'zig', 'solidity', 'cairo' },
     sync_install = false,
     ignore_install = {},
     modules = {},
@@ -77,16 +77,14 @@ local function config()
   }
 end
 
----@type LazyPluginSpec[]
+---@type LazyPluginSpec
 return {
-  {
-    'nvim-treesitter/nvim-treesitter',
-    build = function()
-      pcall(require('nvim-treesitter.install').update { with_sync = true })
-    end,
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
-    config = config
-  }
+  'nvim-treesitter/nvim-treesitter',
+  build = function()
+    pcall(require('nvim-treesitter.install').update { with_sync = true })
+  end,
+  dependencies = {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+  },
+  config = config
 }

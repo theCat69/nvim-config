@@ -1,3 +1,5 @@
+local cmd = "Git"
+
 local function gitsign_config()
   require('gitsigns').setup {
     signs = {
@@ -18,8 +20,9 @@ return {
   },
   {
     'tpope/vim-rhubarb',
-  },
-  {
-    'tpope/vim-fugitive',
+    dependencies = {
+      'tpope/vim-fugitive',
+    },
+    cmd = cmd
   },
 }

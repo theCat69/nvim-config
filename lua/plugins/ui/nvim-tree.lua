@@ -9,6 +9,8 @@ local function on_attach(bufnr)
   -- custom mappings
   vim.keymap.set('n', '<leader>tt', '<Cmd>NvimTreeToggle<CR>', { silent = true })
   vim.keymap.set('n', '<leader>tf', '<Cmd>NvimTreeFindFile<CR>', { silent = true })
+  vim.keymap.set('n', '<leader>tl', '<Cmd>NvimTreeResize 200<CR>', { silent = true })
+  vim.keymap.set('n', '<leader>tr', '<Cmd>NvimTreeResize 30<CR>', { silent = true })
 end
 
 local function config()
@@ -26,13 +28,11 @@ local function config()
   })
 end
 
----@type LazyPluginSpec[]
+---@type LazyPluginSpec
 return {
-  {
-    'nvim-tree/nvim-tree.lua',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
-    config = config
-  }
+  'nvim-tree/nvim-tree.lua',
+  dependencies = {
+    'nvim-tree/nvim-web-devicons',
+  },
+  config = config
 }

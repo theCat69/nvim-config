@@ -2,7 +2,28 @@
 -- See `:help telescope` and `:help telescope.setup()`
 local function config()
   require('telescope').setup({
-    defaults = {
+    extentions = {
+      ["ui-select"] = {
+        require("telescope.themes").get_dropdown {
+          -- even more opts
+        }
+
+        -- pseudo code / specification for writing custom displays, like the one
+        -- for "codeactions"
+        -- specific_opts = {
+        --   [kind] = {
+        --     make_indexed = function(items) -> indexed_items, width,
+        --     make_displayer = function(widths) -> displayer
+        --     make_display = function(displayer) -> function(e)
+        --     make_ordinal = function(e) -> string
+        --   },
+        --   -- for example to disable the custom builtin "codeactions" display
+        --      do the following
+        --   codeactions = false,
+        -- }
+      }
+    },
+    defaults   = {
       ripgrep_arguments = {
         'rg',
         '--hidden',
@@ -22,6 +43,9 @@ local function config()
       },
     },
   })
+
+  -- Enable telescope ui select if installed
+  pcall(require("telescope").load_extension, "ui-select")
 
   -- Enable telescope fzf native, if installed
   pcall(require('telescope').load_extension, 'fzf')
@@ -44,18 +68,17 @@ local function config()
   vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 end
 
----@type LazyPluginSpec[]
+---@type LazyPluginSpec
 return {
-  {
-    'nvim-telescope/telescope.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'make',
-        cond = vim.fn.executable 'make' == 1,
-      },
+  'nvim-telescope/telescope.nvim',
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+    {
+      'nvim-telescope/telescope-fzf-native.nvim',
+      build = 'make',
+      cond = vim.fn.executable 'make' == 1,
     },
-    config = config
-  }
+    "nvim-telescope/telescope-ui-select.nvim",
+  },
+  config = config
 }

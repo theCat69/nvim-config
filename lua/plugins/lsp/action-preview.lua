@@ -1,8 +1,7 @@
 local function config()
   -- handling theme switch between dark and light
-  local theme = require("plugins.ui.theme-metadata").theme
   local delta_string_theme = ""
-  if theme == "light" then
+  if require("metadata.ui").is_light_theme() then
     delta_string_theme = " --light --syntax-theme GitHub"
   end
 
@@ -27,10 +26,8 @@ local function config()
   vim.keymap.set({ "v", "n" }, "gt", require("actions-preview").code_actions)
 end
 
----@type LazyPluginSpec[]
+---@type LazyPluginSpec
 return {
-  {
-    "aznhe21/actions-preview.nvim",
-    config = config,
-  }
+  "aznhe21/actions-preview.nvim",
+  config = config,
 }
