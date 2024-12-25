@@ -1,6 +1,6 @@
 -- filtypes to load all the lsp plugins
 local ft = {
-  "java", "lua", "sql", "rust", "xml", "json", "solidity", "typescript", "javascript", "html", "css",
+  "lua", "sql", "rust", "xml", "json", "solidity", "typescript", "javascript", "html", "css",
   "python", "kotlin", "zig", "docker", "toml", "yaml", "c", "bash", "cairo", "go"
 }
 
@@ -13,19 +13,16 @@ local cmd = { "MasonUpdate", "MasonUpdateAll" }
 -- Those will inherit the default capabilities and on attach if not specificy otherwise
 local servers = { 'clangd', 'rust_analyzer', 'pyright', 'lua_ls', 'yamlls', 'lemminx',
   'kotlin_language_server', 'html', 'cssls', 'bashls', 'jsonls', 'tailwindcss', 'zls', 'dockerls', 'solidity_ls',
-  'taplo', 'gopls' }
--- 'jdtls' => installed via nvim-java
+  'taplo', 'gopls', 'angularls' }
 
 local function config()
-  -- jdtls/java support
-  require('java').setup()
-
   require('neodev').setup({
     library = { plugins = { "nvim-dap-ui" }, types = true },
   })
 
   require('mason-lspconfig').setup {
     ensure_installed = servers,
+    automatic_installation = true,
   }
 
   -- Here we specify default configuration for lsp servers
@@ -39,38 +36,30 @@ end
 ---@type LazyPluginSpec[]
 return {
   {
-    'nvim-java/nvim-java',
     config = config,
     ft = ft,
     cmd = cmd,
+    'neovim/nvim-lspconfig',
     dependencies = {
-      'nvim-java/lua-async-await',
-      'nvim-java/nvim-java-core',
-      'nvim-java/nvim-java-test',
-      'nvim-java/nvim-java-dap',
+      {
+        'williamboman/mason.nvim',
+        opts = {
+          registries = {
+            'github:nvim-java/mason-registry',
+            'github:mason-org/mason-registry',
+          }
+        }
+      },
+      'williamboman/mason-lspconfig.nvim',
+      'RubixDev/mason-update-all',
+    }
+  },
+  {
+    ft = ft,
+    "folke/neodev.nvim",
+    dependencies = {
       'MunifTanjim/nui.nvim',
-      {
-        "folke/neodev.nvim",
-        dependencies = {
-          require("plugins.lsp.dap")
-        }
-      },
-      {
-        'neovim/nvim-lspconfig',
-        dependencies = {
-          {
-            'williamboman/mason.nvim',
-            opts = {
-              registries = {
-                'github:nvim-java/mason-registry',
-                'github:mason-org/mason-registry',
-              }
-            }
-          },
-          'williamboman/mason-lspconfig.nvim',
-          'RubixDev/mason-update-all',
-        }
-      },
+      require("plugins.lsp.dap")
     }
   },
   -- rust additional tools

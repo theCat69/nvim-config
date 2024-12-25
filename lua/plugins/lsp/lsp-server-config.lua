@@ -56,6 +56,19 @@ function M.lsp_server_config()
         filetypes = { 'solidity' },
       }
     end,
+    -- ["angularls"] = function()
+    --   require("lspconfig")["angularls"].setup {
+    --     capabilities = capabilities,
+    --     cmd = {
+    --       'ngserver',
+    --       '--stdio',
+    --       '--tsProbeLocations',
+    --       'C:\\dev\\interpreteur_compilateur\\Node\\node-v22.12.0-win-x64\\node_modules\\typescript\\lib', -- need to point to project root then lib in project
+    --       '--ngProbeLocations',
+    --       'C:\\dev\\interpreteur_compilateur\\Node\\node-v22.12.0-win-x64\\node_modules\\@angular\\language-service',
+    --     },
+    --   }
+    -- end
   }
 
   -- configuring custom cairo
@@ -73,62 +86,6 @@ function M.lsp_server_config()
   require("lspconfig").cairo.setup({
     capabilities = capabilities,
   });
-
-  -- setup jdtls specifically
-  require('lspconfig').jdtls.setup({
-    capabilities = capabilities,
-    -- i should define root dir because otherwise
-    -- he is very slow to find it
-    -- root_dir = require('jdtls.setup').find_root({
-    --   '.git', 'mvnw', 'gradlew', 'pom.xml',
-    --   '.gitignore', '.gitattributes'
-    -- }),
-    settings = {
-      java = {
-        configuration = {
-          runtimes = {
-            {
-              name = "JavaSE-21",
-              path = os.getenv("JAVA_RUNTIMES") .. "/jdk-21.0.1",
-              default = true,
-            },
-            {
-              name = "JavaSE-17",
-              path = os.getenv("JAVA_RUNTIMES") .. "/jdk-17.0.1",
-            },
-            {
-              name = "JavaSE-11",
-              path = os.getenv("JAVA_RUNTIMES") .. "/jdk-11.0.12+7",
-            },
-          },
-          eclipse = {
-            downloadSources = true,
-          },
-          maven = {
-            downloadSources = true,
-          },
-          implementationsCodeLens = {
-            enabled = true,
-          },
-          referencesCodeLens = {
-            enabled = true,
-          },
-          references = {
-            includeDecompiledSources = true,
-          },
-          inlayHints = {
-            parameterNames = {
-              enabled = "all", -- literals, all, none
-            },
-          },
-          flags = {
-            allow_incremental_sync = true,
-          },
-          signatureHelp = { enabled = true },
-        }
-      },
-    }
-  })
 end
 
 return M
