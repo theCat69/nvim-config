@@ -73,3 +73,31 @@ vim.keymap.set('n', '<leader>dam', ':delm A-Z <CR>')
 require("plugins.utils.format").format_activated_switch_set_key()
 require("plugins.utils.format").format_vim_set_key()
 require("plugins.utils.format").format_vim_autocmd()
+
+local function set_runtime_path_to_luarc(runtime_paths)
+  local luarc_paths = {}
+  for i = 1, #runtime_paths do
+    local path = runtime_paths[i]
+    local lua_path = "\"" .. path .. "/lua\""
+    if i ~= #runtime_paths then
+      lua_path = lua_path .. ","
+    end
+    local unix_like_lua_path = string.gsub(lua_path, "\\", "/")
+    luarc_paths[i] = unix_like_lua_path
+  end
+  return luarc_paths
+end
+
+-- it prints all luapaths at cursor position in the current buffer
+-- to get luarc.json working properly with lua_ls on nvim configuration
+-- you got to refresh it everytime you import a knew plugin if you
+-- want to be able to have intellisense with lsp for that plugin
+-- to do so go the .luarc.json file and remove everything inside
+-- the library array then use this keymap to recreate the values
+vim.keymap.set('n', '<leader>web', function()
+  local runtime_paths = vim.api.nvim_list_runtime_paths()
+  local unix_like_lua_paths = set_runtime_path_to_luarc(runtime_paths)
+  local line_count = vim.api.nvim_buf_line_count(0)
+  local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
+  vim.api.nvim_buf_set_lines(0, row - 1, row, false, unix_like_lua_paths)
+end, { desc = "Append string to the end of the buffer" })
