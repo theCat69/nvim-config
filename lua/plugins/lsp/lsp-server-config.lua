@@ -56,6 +56,27 @@ function M.lsp_server_config()
         filetypes = { 'solidity' },
       }
     end,
+    ["angularls"] = function()
+      local root_directory = vim.fs.root(0, 'angular.json')
+      if root_directory ~= nil
+      then
+        local cmd = {
+          'ngserver',
+          '--stdio',
+          '--tsProbeLocations',
+          root_directory .. '/node_modules/typescript/lib', -- need to point to project root then lib in project
+          '--ngProbeLocations',
+          root_directory .. '/node_modules/angular/language-service',
+        }
+        require("lspconfig")["angularls"].setup {
+          capabilities = capabilities,
+          cmd = cmd,
+          on_new_config = function(new_config, new_root_dir)
+            new_config.cmd = cmd
+          end,
+        }
+      end
+    end
   }
 
   -- configuring custom cairo
@@ -73,62 +94,6 @@ function M.lsp_server_config()
   require("lspconfig").cairo.setup({
     capabilities = capabilities,
   });
-
-  -- setup jdtls specifically
-  require('lspconfig').jdtls.setup({
-    capabilities = capabilities,
-    -- i should define root dir because otherwise
-    -- he is very slow to find it
-    -- root_dir = require('jdtls.setup').find_root({
-    --   '.git', 'mvnw', 'gradlew', 'pom.xml',
-    --   '.gitignore', '.gitattributes'
-    -- }),
-    settings = {
-      java = {
-        configuration = {
-          runtimes = {
-            {
-              name = "JavaSE-21",
-              path = os.getenv("JAVA_RUNTIMES") .. "/jdk-21.0.1",
-              default = true,
-            },
-            {
-              name = "JavaSE-17",
-              path = os.getenv("JAVA_RUNTIMES") .. "/jdk-17.0.1",
-            },
-            {
-              name = "JavaSE-11",
-              path = os.getenv("JAVA_RUNTIMES") .. "/jdk-11.0.12+7",
-            },
-          },
-          eclipse = {
-            downloadSources = true,
-          },
-          maven = {
-            downloadSources = true,
-          },
-          implementationsCodeLens = {
-            enabled = true,
-          },
-          referencesCodeLens = {
-            enabled = true,
-          },
-          references = {
-            includeDecompiledSources = true,
-          },
-          inlayHints = {
-            parameterNames = {
-              enabled = "all", -- literals, all, none
-            },
-          },
-          flags = {
-            allow_incremental_sync = true,
-          },
-          signatureHelp = { enabled = true },
-        }
-      },
-    }
-  })
 end
 
 return M
