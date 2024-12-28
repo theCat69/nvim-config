@@ -1,7 +1,7 @@
 -- filtypes to load all the lsp plugins
 local ft = {
   "lua", "sql", "rust", "xml", "json", "solidity", "typescript", "javascript", "html", "css",
-  "python", "kotlin", "zig", "docker", "toml", "yaml", "c", "bash", "cairo", "go"
+  "python", "kotlin", "zig", "docker", "toml", "yaml", "c", "bash", "cairo", "go", "typescriptreact"
 }
 
 -- cmd that trigger the load of all lsp plugins
@@ -13,7 +13,7 @@ local cmd = { "MasonUpdate", "MasonUpdateAll" }
 -- Those will inherit the default capabilities and on attach if not specificy otherwise
 local servers = { 'clangd', 'rust_analyzer', 'pyright', 'lua_ls', 'yamlls', 'lemminx',
   'kotlin_language_server', 'html', 'cssls', 'bashls', 'jsonls', 'tailwindcss', 'zls', 'dockerls', 'solidity_ls',
-  'taplo', 'gopls', 'angularls' }
+  'taplo', 'gopls', 'angularls', 'ts_ls' }
 
 local function config()
   require('neodev').setup({

@@ -56,19 +56,27 @@ function M.lsp_server_config()
         filetypes = { 'solidity' },
       }
     end,
-    -- ["angularls"] = function()
-    --   require("lspconfig")["angularls"].setup {
-    --     capabilities = capabilities,
-    --     cmd = {
-    --       'ngserver',
-    --       '--stdio',
-    --       '--tsProbeLocations',
-    --       'C:\\dev\\interpreteur_compilateur\\Node\\node-v22.12.0-win-x64\\node_modules\\typescript\\lib', -- need to point to project root then lib in project
-    --       '--ngProbeLocations',
-    --       'C:\\dev\\interpreteur_compilateur\\Node\\node-v22.12.0-win-x64\\node_modules\\@angular\\language-service',
-    --     },
-    --   }
-    -- end
+    ["angularls"] = function()
+      local root_directory = vim.fs.root(0, 'angular.json')
+      if root_directory ~= nil
+      then
+        local cmd = {
+          'ngserver',
+          '--stdio',
+          '--tsProbeLocations',
+          root_directory .. '/node_modules/typescript/lib', -- need to point to project root then lib in project
+          '--ngProbeLocations',
+          root_directory .. '/node_modules/angular/language-service',
+        }
+        require("lspconfig")["angularls"].setup {
+          capabilities = capabilities,
+          cmd = cmd,
+          on_new_config = function(new_config, new_root_dir)
+            new_config.cmd = cmd
+          end,
+        }
+      end
+    end
   }
 
   -- configuring custom cairo
