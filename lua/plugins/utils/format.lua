@@ -5,7 +5,7 @@ local format_vim_input = "mugg=Gxu"
 
 local function active_client_format_supported()
   for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
-    if client and client.supports_method("textDocument/formatting") then
+    if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_formatting) then
       return true
     end
   end
