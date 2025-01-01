@@ -32,7 +32,7 @@ function M.on_attach(event)
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Sirange_gnature Documentation')
+  nmap('<C-u>', vim.lsp.buf.signature_help, 'Sirange_gnature Documentation')
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
   nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
