@@ -1,7 +1,7 @@
 -- filtypes to load all the lsp plugins
 local ft = {
   "lua", "sql", "rust", "xml", "json", "solidity", "typescript", "javascript", "html", "css",
-  "python", "kotlin", "zig", "docker", "toml", "yaml", "c", "bash", "cairo", "go", "typescriptreact"
+  "python", "kotlin", "zig", "docker", "toml", "yaml", "c", "bash", "cairo", "go", "typescriptreact", "sh"
 }
 
 -- cmd that trigger the load of all lsp plugins
