@@ -66,7 +66,7 @@ function M.format_lsp_autocmd()
   -- format on save using lsp
   vim.api.nvim_create_autocmd('BufWritePre', {
     group = vim.api.nvim_create_augroup('onSaveEvent', { clear = true }),
-    pattern = { "*.rs", "*.ts", "*.tsx", "*.html", "*.css", "*.py", "*.xml", "*.json", "*.yml", "*.js", "*.lua", "*.sol", "*.java", "*.cairo" }, -- supported format on save
+    pattern = { "*.rs", "*.ts", "*.tsx", "*.html", "*.css", "*.py", "*.xml", "*.json", "*.yml", "*.js", "*.lua", "*.sol", "*.java" }, -- supported format on save
     callback = M.format_lsp_with_fallback,
   })
 end
