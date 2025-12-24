@@ -36,6 +36,6 @@ lazy_utils.register_plugin(require("plugins.ai.gen"))
 require('lazy').setup(lazy_utils.get_plugins())
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'scala', 'lua' },
+  pattern = { 'scala', 'lua', 'rust' },
   callback = function() vim.treesitter.start() end,
 })
